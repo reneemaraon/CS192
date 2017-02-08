@@ -24,7 +24,7 @@
       <!-- Full name -->
       <label class="control-label"  for="fullname">Full name</label>
       <div class="controls">
-        <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+        <input type="text" id="fullname" name="fullname" placeholder="" class="input-xlarge">
         <p class="help-block">E.g. Pedro A. Penduko</p>
       </div>
     </div>
