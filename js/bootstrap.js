@@ -2375,3 +2375,10 @@ if (typeof jQuery === 'undefined') {
   })
 
 }(jQuery);
+
+
+$('#confirm_password').on('keyup', function () {
+    if ($(this).val() == $('#password').val()) {
+        $('#message').html('matching').css('color', 'green');
+    } else $('#message').html('not matching').css('color', 'red');
+});

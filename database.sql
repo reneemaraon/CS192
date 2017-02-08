@@ -25,11 +25,11 @@ USE `upcatdb`;
 
 
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS`user` (
   `userID` int(11) NOT NULL,
   `username` varchar(10) NOT NULL,
   `isAdmin` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `password` varchar(10) NOT NULL,
   `email` varchar(20) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
@@ -241,8 +241,8 @@ CREATE TABLE `user` (
 -- --
 -- -- Indexes for table `user`
 -- --
--- ALTER TABLE `user`
---   ADD PRIMARY KEY (`userID`);
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`userID`);
 
 -- --
 -- -- AUTO_INCREMENT for dumped tables
@@ -269,13 +269,13 @@ CREATE TABLE `user` (
 -- ALTER TABLE `tickets`
 --   MODIFY `ticketNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=366;
 -- --
--- -- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `user`
 -- --
--- ALTER TABLE `user`
---   MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
--- /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
--- /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
--- /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `user`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
 -- ALTER TABLE `created`
