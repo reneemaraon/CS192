@@ -89,6 +89,7 @@ $bool = NULL;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   $username = mysql_real_escape_string($_POST['username']);
   $password = mysql_real_escape_string($_POST['password']);
+  $encpass = md5($password);
   $name = mysql_real_escape_string($_POST['fullname']);
   $phone = $_POST['phone'];
   $email = mysql_real_escape_string($_POST['email']);
@@ -109,7 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 if($bool){
-  mysql_query("INSERT INTO user (name, username, password, email, phone, isAdmin) VALUES ('$name', '$username', '$password', '$email', '$phone', 0)");
+  mysql_query("INSERT INTO user (name, username, password, email, phone, isAdmin) VALUES ('$name', '$username', '$encpass', '$email', '$phone', 0)");
   Print '<script>alert("Successfully Registered!");</script>'; // Prompts the user
   Print '<script>window.location.assign("register.php");</script>'; // redirects to register.php
   header('location:login.php');
