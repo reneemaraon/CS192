@@ -26,7 +26,7 @@
         $_SESSION['userID'] = $table_userID;
         $_SESSION['rights'] = $table_rights;
         $_SESSION['name'] = $table_name;
-        header('location: home.php');
+        header('location: sample.php');
       }
     }
     else{
