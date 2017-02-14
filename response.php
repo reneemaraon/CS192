@@ -30,17 +30,17 @@
 		<div class="row" >
 			<div class="col-sm-3">
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
-						<li><a href="sample.php"  class="active">View List of Personnel</a></li>
-						<li><a href="addrecord.php">Add Record</a></li>
+						<li><a href="sample.php">View List of Personnel</a></li>
+						<li><a href="#">Add Record</a></li>
 						<li><a href="#">Invitation</a></li>
-						<li><a href="response.php">Response</a></li>
+						<li><a href="response.php" class="active">Response</a></li>
 						<li><a href="#">Assignment</a></li>
 						<li><a href="#">UPCAT Attendance</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9">
 						<!-- CONTENT -->
-						<h3> List of UPCAT Personnel </h3>
+						<h3> Response </h3>
 						<br>
 						<form class="form-inline">
 							<label class="sr-only" for="inlineFormInput">Year</label>
@@ -57,7 +57,7 @@
 							<button type="submit" class="btn btn-primary">Search</button>
 							 </form>
 
-							<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+							<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search.." title="Type in a name">
 
 							<!--Table. Calls mysql to show the data-->
 							<?php
@@ -85,12 +85,14 @@
 											echo '<tr>';
 											echo '<td>' .$row["COL 1"] . '</td>'; 
 											echo '<td>' .$row["COL 2"] . '</td>';
-											echo '<td>' .$row["COL 6"] . '</td>';
-											echo '<td>' .$row["COL 4"] . '</td>';
-											echo '<td>' .$row["COL 3"] . '</td>';
-											echo '<td>' .$row["COL 7"] . '</td>';
-											echo '<td>' .$row["COL 8"] . '</td>';
 											echo '<td>' .$row["COL 9"] . '</td>';
+											echo '<td>' . '<form action="">
+												<input type="radio" name="response" value="Yes"> Yes
+												<input type="radio" name="response" value="No"> No
+												<input type="radio" name="response" value="Dil"> Dil
+												<input type="radio" name="response" value="Not Available"> Not Available
+												<input type="radio" name="response" value="No Response"> No Response
+												</form>' . '</td>';
 											
 											echo '</tr>';
 									}
