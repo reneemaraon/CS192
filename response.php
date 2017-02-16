@@ -78,6 +78,7 @@
 
 							if ($result->num_rows > 0) {
 									// output data of each row
+									echo '<form action="update_response.php"  method="post"> <input type="submit" value="Submit">';
 									echo '<table id="myTable">';
 
 									while($row = $result->fetch_assoc()) {
@@ -86,17 +87,20 @@
 											echo '<td>' .$row["COL 1"] . '</td>'; 
 											echo '<td>' .$row["COL 2"] . '</td>';
 											echo '<td>' .$row["COL 9"] . '</td>';
-											echo '<td>' . '<form action="">
-												<input type="radio" name="response" value="Yes"> Yes
-												<input type="radio" name="response" value="No"> No
-												<input type="radio" name="response" value="Dil"> Dil
-												<input type="radio" name="response" value="Not Available"> Not Available
-												<input type="radio" name="response" value="No Response"> No Response
-												</form>' . '</td>';
-											
+
+											echo '<td>' . '
+												<input type="radio" name="' .$row["COL 1"] .'" value="Yes"> Yes 
+												<input type="radio" name="' .$row["COL 1"] .'" value="No"> No
+												<input type="radio" name="' .$row["COL 1"] .'" value="Dil"> Dil
+												<input type="radio" name="' .$row["COL 1"] .'" value="Not Available"> Not Available
+												<input type="radio" name="' .$row["COL 1"] .'" value="No Response" checked="checked"> No Response
+												' . '</td>';
+
+											echo '<td>' .$row["COL 12"] . '</td>';
 											echo '</tr>';
+
 									}
-									echo '</table>';
+									echo '</table></form>';
 							} else {
 									echo "0 results";
 							}
