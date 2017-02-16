@@ -38,12 +38,13 @@
 		<div class="row" >
 			<div class="col-sm-2">
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
-						<li><a href="sample.php"  class="active">View List of Personnel</a></li>
+						<li><a href="home.php" class="active">View List of Personnel</a></li>
 						<li><a href="addrecord.php">Add Record</a></li>
-						<li><a href="#">Invitation</a></li>
+						<li><a href="invitation.php">Invitation</a></li>
 						<li><a href="response.php">Response</a></li>
-						<li><a href="#">Assignment</a></li>
-						<li><a href="#">UPCAT Attendance</a></li>
+						<li><a href="assignment.php">Assignment</a></li>
+						<li><a href="attendance.php">UPCAT Attendance</a></li>
+
 				</ul>
 			</div>
 			<div class="col-sm-9">
