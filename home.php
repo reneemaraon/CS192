@@ -5,8 +5,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style2.css">
+	<link rel="stylesheet" type="text/css" href="css/style2.css?<?php echo time(); ?>" title="style" />
 	<script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
   	  <?php
@@ -82,6 +85,7 @@
 							} 
 
 							$sql = "SELECT * FROM `TABLE 2`";
+							$sql2 = "SELECT * FROM `TABLE 1`";
 							$result = $conn->query($sql);
 
 							if ($result->num_rows > 0) {
@@ -99,7 +103,19 @@
 											echo '<td>' .$row["COL 7"] . '</td>';
 											echo '<td>' .$row["COL 8"] . '</td>';
 											echo '<td>' .$row["COL 9"] . '</td>';
-											
+											echo '<td>' . 
+											'<div class="dropdown">
+											  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile
+											  <span class="caret"></span></button>
+											  <ul class="dropdown-menu">
+											    <li>photo</li>' .
+											    '<li>' .$row["COL 1"] . '</li>' .
+											    '<li>' .$row["COL 2"]. '</li>' .
+											    '<li>' .$row["COL 3"]. '</li>' .
+											    '<li><a href="#">What do we place here again?</a></li>
+
+											  </ul>
+											</div>' 										. '<td>';
 											echo '</tr>';
 									}
 									echo '</table>';
