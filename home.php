@@ -67,82 +67,97 @@
 
 							<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 
-							<!--Table. Calls mysql to show the data-->
-							<?php
-							$servername = "localhost";  
-							$username = "root";
-							$password = "";
-							$dbname = "Assignment";
+							<table class="table">
+								<thead>
+									<tr>
+										<th style="text-align:center">ID</th>
+										<th style="text-align:center">Status</th>
+										<th style="text-align:center">Name</th>
+										<th style="text-align:center">UCODE</th>
+										<th style="text-align:center">NYEAR</th>
+										<th style="text-align:center">Year</th>
+										<th style="text-align:center">TCODE</th>
+										<th style="text-align:center">Test Center</th>
+										<th style="text-align:center">ASSG</th>
+										<th style="text-align:center">Profile</th>
+									</tr>
+								<tbody>
 
-							// Create connection
-							$conn = new mysqli($servername, $username, $password, $dbname);
-							// Check connection
-							if ($conn->connect_error) {
-									die("Connection failed: " . $conn->connect_error);
-							} 
+								<!--Table. Calls mysql to show the data-->
+								<?php
+								$servername = "localhost";  
+								$username = "root";
+								$password = "";
+								$dbname = "upcatdb";
 
-							$sql = "SELECT * FROM `TABLE 2`";
-							$sql2 = "SELECT * FROM `TABLE 1`";
-							$result = $conn->query($sql);
+								// Create connection
+								$conn = new mysqli($servername, $username, $password, $dbname);
+								// Check connection
+								if ($conn->connect_error) {
+										die("Connection failed: " . $conn->connect_error);
+								} 
 
-							if ($result->num_rows > 0) {
-									// output data of each row
-									echo '<table id="myTable">';
+								$sql = "SELECT * FROM `DIRINFO`";
+								$result = $conn->query($sql);
 
-									while($row = $result->fetch_assoc()) {
+								if ($result->num_rows > 0) {
+										// output data of each row
+										while($row = $result->fetch_assoc()) {
 
-											echo '<tr>';
-											echo '<td>' .$row["COL 1"] . '</td>'; 
-											echo '<td>' .$row["COL 2"] . '</td>';
-											echo '<td>' .$row["COL 6"] . '</td>';
-											echo '<td>' .$row["COL 4"] . '</td>';
-											echo '<td>' .$row["COL 3"] . '</td>';
-											echo '<td>' .$row["COL 7"] . '</td>';
-											echo '<td>' .$row["COL 8"] . '</td>';
-											echo '<td>' .$row["COL 9"] . '</td>';
-											echo '<td>' . 
-											'<div class="dropdown">
-											  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile
-											  <span class="caret"></span></button>
-											  <ul class="dropdown-menu">
-											    <li>photo</li>' .
-											    '<li>' .$row["COL 1"] . '</li>' .
-											    '<li>' .$row["COL 2"]. '</li>' .
-											    '<li>' .$row["COL 3"]. '</li>' .
-											    '<li><a href="#">What do we place here again?</a></li>
+												echo '<tr>';
+												echo '<td align="center">' .$row["ID"] . '</td>'; 
+												echo '<td align="center">' .$row["STATUS"] . '</td>';
+												echo '<td align="center">' .$row["NAME"] . '</td>';
+												echo '<td align="center">' .$row["UCODE"] . '</td>';
+												echo '<td align="center">' .$row["NYR"] . '</td>';
+												echo '<td align="center">' .$row["YEAR"] . '</td>';
+												echo '<td align="center">' .$row["TCTRCODE"] . '</td>';
+												echo '<td align="center">' .$row["testcenter"] . '</td>';
+												echo '<td align="center">' .$row["ASSG"] . '</td>';
+												echo '<td align="center"><a href="viewprofile.php?id='.$row["ID"].'">View Profile</a></td>';
+												// '<div class="dropdown">
+												//   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile
+												//   <span class="caret"></span></button>
+												//   <ul class="dropdown-menu">
+												//     <li>photo</li>' .
+												//     '<li>' .$row["COL 1"] . '</li>' .
+												//     '<li>' .$row["COL 2"]. '</li>' .
+												//     '<li>' .$row["COL 3"]. '</li>' .
+												//     '<li><a href="#">What do we place here again?</a></li>
 
-											  </ul>
-											</div>' 										. '<td>';
-											echo '</tr>';
-									}
-									echo '</table>';
-							} else {
-									echo "0 results";
-							}
-
-
-							$conn->close();
-							?>
-							<!--Filter-->
-							<script>
-								function myFunction() {
-									var input, filter, table, tr, td, i;
-									input = document.getElementById("myInput");
-									filter = input.value.toUpperCase();
-									table = document.getElementById("myTable");
-									tr = table.getElementsByTagName("tr");
-									for (i = 0; i < tr.length; i++) {
-										td = tr[i].getElementsByTagName("td")[0];
-										if (td) {
-											if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-												tr[i].style.display = "";
-											} else {
-												tr[i].style.display = "none";
-											}
-										}       
-									}
+												//   </ul>
+												// </div>' 										. '<td>';
+												echo '</tr>';
+										}
+								} else {
+										echo "0 results";
 								}
-							</script>
+
+
+								$conn->close();
+								?>
+								<!--Filter-->
+								<script>
+									function myFunction() {
+										var input, filter, table, tr, td, i;
+										input = document.getElementById("myInput");
+										filter = input.value.toUpperCase();
+										table = document.getElementById("myTable");
+										tr = table.getElementsByTagName("tr");
+										for (i = 0; i < tr.length; i++) {
+											td = tr[i].getElementsByTagName("td")[0];
+											if (td) {
+												if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+													tr[i].style.display = "";
+												} else {
+													tr[i].style.display = "none";
+												}
+											}       
+										}
+									}
+								</script>
+								</tbody>
+							</table>
 			</div>
 		</div>
 </div>
