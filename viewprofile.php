@@ -51,6 +51,32 @@
 				<h2> HELLO THERAAKNA LKFJGLAKJSCNL AJSDNCAGR ASKDJASKJKDLA SAJDANS </h2>
 					<!-- CONTENT -->
 
+
+			    <?php
+			        if(!empty($_GET['id'])){
+			          $pid=$_GET['id'];
+			          $_SESSION['chosenPID'] = $pid;
+			          $id_exists=true;
+			          mysql_connect("localhost", "root", "") or die(mysql_error());
+			          mysql_select_db("upcatdb") or die("Cannot connect to database");
+			          $eventName=mysql_fetch_array(mysql_query("SELECT eventName FROM event WHERE eventID = '$eid'"))[0];
+			          $query = mysql_query("SELECT theaterName,showDate,startTime,endTime,COUNT(isReserved) as avSeats FROM shows,theater,tickets WHERE shows.showID=tickets.showID AND shows.theaterID=theater.theaterID AND eventID='$eid' AND isReserved=0 GROUP BY tickets.showID ");
+			          while($row = mysql_fetch_array($query)){
+			            print "<tr>";
+			              print '<td align="center">'. $row['theaterName']."</td>";
+			              print '<td align="center">'. $row['showDate']."</td>";
+			              print '<td align="center">'. $row['startTime']."</td>";
+			              print '<td align="center">'. $row['endTime']."</td>";
+			              print '<td align="center">'. $row['avSeats']."</td>";
+
+
+			            print "</tr>";
+			          }
+
+			        }
+			    ?>
+
+
 			</div>
 		</div>
 </div>
