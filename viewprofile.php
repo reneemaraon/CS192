@@ -47,9 +47,9 @@
 
 				</ul>
 			</div>
-			<div class="col-sm-2">
-				<h2> HELLO THERAAKNA LKFJGLAKJSCNL AJSDNCAGR ASKDJASKJKDLA SAJDANS </h2>
+			<div class="col-sm-3">
 					<!-- CONTENT -->
+					<!-- LEFT SIDE OF PROFILE -->
 
 
 			    <?php
@@ -59,23 +59,193 @@
 			          $id_exists=true;
 			          mysql_connect("localhost", "root", "") or die(mysql_error());
 			          mysql_select_db("upcatdb") or die("Cannot connect to database");
-			          $eventName=mysql_fetch_array(mysql_query("SELECT eventName FROM event WHERE eventID = '$eid'"))[0];
-			          $query = mysql_query("SELECT theaterName,showDate,startTime,endTime,COUNT(isReserved) as avSeats FROM shows,theater,tickets WHERE shows.showID=tickets.showID AND shows.theaterID=theater.theaterID AND eventID='$eid' AND isReserved=0 GROUP BY tickets.showID ");
-			          while($row = mysql_fetch_array($query)){
-			            print "<tr>";
-			              print '<td align="center">'. $row['theaterName']."</td>";
-			              print '<td align="center">'. $row['showDate']."</td>";
-			              print '<td align="center">'. $row['startTime']."</td>";
-			              print '<td align="center">'. $row['endTime']."</td>";
-			              print '<td align="center">'. $row['avSeats']."</td>";
+			      
+			          $query = mysql_query("SELECT * FROM DIRINFO WHERE ID='$pid' ");
+			          $row = mysql_fetch_array($query);
 
 
-			            print "</tr>";
-			          }
-
+			          echo '<h5 class="specialcolor"><b> Profile ID No : '.$row['ID']."</h5><br>";
 			        }
 			    ?>
+			    	<center>
+				    <img src="pics/NoImage.JPG" width="200px">
+					</center>
+					<br>
+					<br>
+					<div class="btn-group btn-group-justified">
+				    <a href="#" class="btn btn-primary">Add Image</a>
+				    <a href="#" class="btn btn-primary">Delete Image</a>
+					</div>
+					<br>
 
+				    <?php
+				    	echo '<h5><b>Name :</b> '.$row['NAME'].'</h4>';
+				    	echo '<h5><b>Birthdate:</b> '.date($row['BIRTHDATE']).'</h4>';
+				    	echo '<h5><b>Sex:</b> '.$row['SEX'].'</h4>';
+				    	echo '<h5><b>Home:</b> '.$row['HOMEADDR'].'</h4><br>';
+				    	
+				    	echo '<h5><b>Position:</b> '.$row['POSITION'].'</h4>';
+				    	echo '<h5><b>Tenure:</b> '.$row['TENURE'].'</h4>';
+				    	echo '<h5><b>Unit/Department:</b> '.$row['UNIT'].'</h4>';
+				    	echo '<h5><b>Coll/Office:</b> '.$row['COLL'].'</h4>';
+				    	echo '<h5><b>FAR:</b> '.$row['FAR'].'</h4>';
+				    	echo '<h5><b>Salary Grade:</b> '.$row['SG'].'</h4><br>';
+
+				    	echo '<h5 class="specialcolor"><b>Contact Information</b></h5>';
+				    	echo '<div class="col-sm-4">
+				    			
+				    			<h5><b>Home: </b></h5>
+				    			<h5><b>Office: </b></h5>
+				    			<h5><b>Mobile: </b></h5>
+				    			<h5><b>Email: </b></h5>
+				    			
+				    		</div>
+				    		<div class="col-sm-8">
+				    			<h5>'.$row['TEL2'].'</h5>
+				    			<h5>'.$row['TEL1'].'</h5>
+				    			<h5>'.$row['CELFONE'].'</h5>
+				    			<h5>'.$row['EMAIL'].'</h5>
+
+				    		</div>';
+				    ?>
+			</div>
+			<div class="col-sm-7">
+				<!-- RIGHT SIDE OF PROFILE -->
+				<h3 class="specialcolor">UPCAT Assignment Statistics </h3>
+
+				<div class="col-sm-2">
+					<div class="table-bordered">
+						<table class="table">
+							<thead>
+								<tr>
+									<th style="text-align:center">NYR</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<?php echo '<td align="center"><h4><b>'.$row['NYR'].'</h4></td>';?>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="col-sm-10">
+					<div class="table-bordered">
+						<table class="table">
+							<thead>
+								<tr class="specialcolor">
+									<th style="text-align:center">RE</th>
+									<th style="text-align:center">RA</th>
+									<th style="text-align:center">S</th>
+									<th style="text-align:center">E</th>
+									<th style="text-align:center">EP</th>
+									<th style="text-align:center">P</th>
+									<th style="text-align:center">PA</th>
+									<th style="text-align:center">A</th>
+									<th style="text-align:center">BA</th>
+									<th style="text-align:center">C</th>
+									<th style="text-align:center">CW</th>
+									<th style="text-align:center">D</th>
+									<th style="text-align:center">TE</th>
+									<th style="text-align:center">TL</th>
+									<th style="text-align:center">TR</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<?php 
+									echo '<td align="center">'.$row['RE'].'</td>';
+									echo '<td align="center">'.$row['RA'].'</td>';
+									echo '<td align="center">'.$row['S'].'</td>';
+									echo '<td align="center">'.$row['E'].'</td>';
+									echo '<td align="center">'.$row['EP'].'</td>';
+									echo '<td align="center">'.$row['P'].'</td>';
+									echo '<td align="center">'.$row['PA'].'</td>';
+									echo '<td align="center">'.$row['A'].'</td>';
+									echo '<td align="center">'.$row['BA'].'</td>';
+									echo '<td align="center">'.$row['C'].'</td>';
+									echo '<td align="center">'.$row['CW'].'</td>';
+									echo '<td align="center">'.$row['D'].'</td>';
+									echo '<td align="center">'.$row['TE'].'</td>';
+									echo '<td align="center">'.$row['TL'].'</td>';
+									echo '<td align="center">'.$row['TR'].'</td>';
+
+									?>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+
+				<br>
+				<br>
+				<h3 class="specialcolor">UPCAT History </h3>
+
+			
+				<div class="table-bordered">
+					<table class="table">
+						<thead>
+							<tr class="specialcolor">
+								<th style="text-align:center">Year</th>
+								<th style="text-align:center">ASSG</th>
+								<th style="text-align:center">tctr</th>
+								<th style="text-align:center">Test Center</th>
+								<th style="text-align:center">Building</th>
+								<th style="text-align:center">Room</th>
+								<th style="text-align:center">Remarks</th>
+
+							</tr>
+						</thead>
+						<tbody>
+								<?php 
+								$servername = "localhost";  
+								$username = "root";
+								$password = "";
+								$dbname = "upcatdb";
+
+								// Create connection
+								$conn = new mysqli($servername, $username, $password, $dbname);
+								// Check connection
+								if ($conn->connect_error) {
+										die("Connection failed: " . $conn->connect_error);
+								} 
+
+								$sql = "SELECT * FROM `CATDIREC` WHERE ID='$pid'";
+								$result = $conn->query($sql);
+
+								if ($result->num_rows > 0) {
+										// output data of each row
+										while($row = $result->fetch_assoc()) {
+
+												echo '<tr>';
+												echo '<td align="center">' .$row["YEAR"] . '</td>';
+												echo '<td align="center">' .$row["ASSG"] . '</td>';
+												echo '<td align="center">' .$row["TCTRCODE"] . '</td>';
+												echo '<td align="center">' .$row["TESTCENTER"] . '</td>';
+												echo '<td align="center">' .$row["BUILDING"] . '</td>'; 
+												echo '<td align="center">' .$row["ROOM"] . '</td>';
+												echo '<td align="center">' .$row["Remarks"] . '</td>';
+												echo '</tr>';
+										}
+								} else {
+										echo "0 results";
+								}
+
+
+								$conn->close();
+
+								?>
+						</tbody>
+					</table>
+
+				</div>
 
 			</div>
 		</div>
