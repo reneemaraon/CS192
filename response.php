@@ -73,7 +73,7 @@
 									die("Connection failed: " . $conn->connect_error);
 							} 
 
-							$sql = "SELECT * FROM `TABLE 2`";
+							$sql = "SELECT * FROM `TABLE 2` LIMIT 10, 20";
 							$result = $conn->query($sql);
 
 							if ($result->num_rows > 0) {
@@ -87,13 +87,14 @@
 											echo '<td>' .$row["COL 1"] . '</td>'; 
 											echo '<td>' .$row["COL 2"] . '</td>';
 											echo '<td>' .$row["COL 9"] . '</td>';
+											echo '<td>' .$row["COL 10"] . '</td>';
 
 											echo '<td>' . '
-												<input type="radio" name="' .$row["COL 1"] .'" value="Yes"> Yes 
-												<input type="radio" name="' .$row["COL 1"] .'" value="No"> No
-												<input type="radio" name="' .$row["COL 1"] .'" value="Dil"> Dil
-												<input type="radio" name="' .$row["COL 1"] .'" value="Not Available"> Not Available
-												<input type="radio" name="' .$row["COL 1"] .'" value="No Response" checked="checked"> No Response
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Yes"> Yes 
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No"> No
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Dil"> Dil
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Not Available"> Not Available
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No Response" checked="checked"> No Response
 												' . '</td>';
 
 											echo '<td>' .$row["COL 12"] . '</td>';
