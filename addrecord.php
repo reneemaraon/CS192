@@ -49,11 +49,11 @@
 			<div class="col-sm-5">
 					<!-- CONTENT -->
 				<h2>Create Record</h2>
-				<form>
+				<form METHOD="POST">
 				<h3>Personal Details</h3>
 				<div class="form-group">
 					<label for="IDno">ID No</label>
-					<select class="form-control" id="IDno">
+					<select class="form-control" id="IDno" name="IDno">
 						<option>12345</option>
 						<option>12346</option>
 					</select>
@@ -75,31 +75,31 @@
 
 				<div class="form-group">
 					<label for="upcatPreAss">UPCAT Pre-Assignment</label>
-					<input type="text" class="form-control" id="upcatPreAss">
+					<input type="text" class="form-control" id="upcatPreAss" name="upcatPreAss">
 				</div>
 
 				<div class="form-group">
 					<label for="lastName">Last Name</label>
-					<input type="text" class="form-control" id="lastName">
+					<input type="text" class="form-control" id="lastName" name="lastName">
 				</div>
 
 				<div class="form-group">
 					<label for="firstName">First Name</label>
-					<input type="text" class="form-control" id="firstName">
+					<input type="text" class="form-control" id="firstName" name="firstName">
 				</div>
 				<div class="form-group">
 					<label for="middleName">Middle Name</label>
-					<input type="text" class="form-control" id="middleName">
+					<input type="text" class="form-control" id="middleName" name="middleName">
 				</div>
 
 				<div class="form-group">
 					<label for="suffix">Suffix</label>
-					<input type="text" class="form-control" id="suffix">
+					<input type="text" class="form-control" id="suffix" name="suffix">
 				</div>
 
 				<div class="form-group">
 					<label for="sex">Sex</label>
-					<select class="form-control" id="sex">
+					<select class="form-control" id="sex" name="sex">
 						<option>M</option>
 						<option>F</option>
 					</select>
@@ -170,3 +170,34 @@
 				</div>
 </body>
 </html>
+
+
+<?php
+
+$bool = NULL;
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+  
+  $IDno = mysql_real_escape_string($_POST['IDno']);
+  $lastName = mysql_real_escape_string($_POST['lastName']);
+  $firstName = mysql_real_escape_string($_POST['firstName']);
+  $middleName = mysql_real_escape_string($_POST['middleName']);
+  $suffix = mysql_real_escape_string($_POST['suffix']);
+  $sex = mysql_real_escape_string($_POST['sex']);
+
+  echo($IDno);
+  $bool = true;
+
+  mysql_connect("localhost", "root", "") or die(mysql_error()); //connect to server
+  mysql_select_db("upcatdb") or die("Cannot connect to database"); //connect to database
+  $query = mysql_query("Select * from user");
+
+}
+
+if($bool){
+  $insert = mysql_query("INSERT INTO `DIRINFO` (`ID`, `LASTNAME`, `FIRSTNAME`, `MIDDLENAME`) VALUES ('$IDno', '$lastName', '$firstName', '$middleName');");
+  Print '<script>alert("Successfully Registered!");</script>'; // Prompts the user
+
+  if (!$insert) echo mysql_error();
+}
+?>
