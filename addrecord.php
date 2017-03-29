@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>View Profile</title>
+	<title>Add a Record</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -46,28 +46,81 @@
 
 				</ul>
 			</div>
-			<div class="col-sm-9">
+			<div class="col-sm-5">
 					<!-- CONTENT -->
-				<h1>UPCAT DIRECTORY INFORMATION</h1>
 				<h2>Create Record</h2>
 				<form>
 				<h3>Personal Details</h3>
-				ID No. <select name = "id no"><option></select><br>
-				Image <input type = "file"; name = "image"><br>
-				Name Tag <select name = "name tag">
-				<option>Dr.
-				<option>Prof.
-				<option>Mr.
-				<option>Ms.
-				</select><br>
-				UPCAT Pre-Assignment <select name = "upcat pre assignment"><option></select><br>
-				Last Name <input type = "text"; name = "last name"; size = "30"><br>
-				First Name <input type = "text"; name = "first name"; size = "30"><br>
-				Middle Name <input type = "text"; name = "middle name"; size = "30"><br>
-				Suffix <input type = "text"; name = "suffix"; size = "5"><br>
-				Sex <select name = "sex"><option>M<option>F</select><br>
-				Birthdate <input type = "date"; name = "birthdate"><br>
-				Home Address <input type = "text"; name = "home address"; size = "50"><br>
+				<div class="form-group">
+					<label for="IDno">ID No</label>
+					<select class="form-control" id="IDno">
+						<option>12345</option>
+						<option>12346</option>
+					</select>
+				</div>
+				</br>
+				
+
+				<b>Image </b></br><input type = "file"; name = "image"><br>
+				<div class="form-group">
+					<label for="nametag">Name Tag</label>
+					<select class="form-control" id="nametag">
+						<option>Dr.</option>
+						<option>Prof.</option>
+						<option>Mr.</option>
+						<option>Ms.</option>
+
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="upcatPreAss">UPCAT Pre-Assignment</label>
+					<input type="text" class="form-control" id="upcatPreAss">
+				</div>
+
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" class="form-control" id="lastName">
+				</div>
+
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" class="form-control" id="firstName">
+				</div>
+				<div class="form-group">
+					<label for="middleName">Middle Name</label>
+					<input type="text" class="form-control" id="middleName">
+				</div>
+
+				<div class="form-group">
+					<label for="suffix">Suffix</label>
+					<input type="text" class="form-control" id="suffix">
+				</div>
+
+				<div class="form-group">
+					<label for="sex">Sex</label>
+					<select class="form-control" id="sex">
+						<option>M</option>
+						<option>F</option>
+					</select>
+				</div>
+
+
+				<div class="form-group">
+					<label for="bday">Birthday</label>
+		   			<input data-format="dd/MM/yyyy hh:mm:ss" class="form-control" type="date" id="bday">
+				</div>
+				
+				<div class="form-group">
+					<label for="address">Address</label>
+					<input type="text" class="form-control" id="address">
+				</div>
+								
+				<div class="form-group">
+					<label for="tel">Telephone Number</label>
+					<input type="text" class="form-control" id="tel">
+				</div>
+				
 				Tel. No. (Home) <input type = "text"; name = "tel no"; size = "30"><br>
 				Mobile No. <input type = "text"; name = "mobile no"; size = "30"><br>
 				Email Address <input type = "text"; name = "email add"; size = "30"><br>

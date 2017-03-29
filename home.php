@@ -97,7 +97,7 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `DIRINFO` ORDER BY ID";
+								$sql = "SELECT * FROM `DIRINFO` ORDER BY ID LIMIT 100";
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
