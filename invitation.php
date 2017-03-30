@@ -51,6 +51,7 @@
 						<!-- CONTENT -->
 						<h3> Invitation </h3>
 						<button id="button1" type="button">Write to File</button>
+						<a href="pdf.php">PDF</a>
 						<br>
 						<form class="form-inline">
 							<label class="sr-only" for="inlineFormInput">Year</label>
@@ -165,7 +166,7 @@
 								$('#button1').click(function(){
 								 $.ajax({
 								 type: "POST",
-								 url: "abc.php",
+								 url: "generate_pdf.php",
 								 data: "",
 								 success: function(msg){
 								     alert(msg);
