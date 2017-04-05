@@ -88,15 +88,53 @@
 											echo '<td>' .$row["COL 2"] . '</td>';
 											echo '<td>' .$row["COL 9"] . '</td>';
 											echo '<td>' .$row["COL 10"] . '</td>';
+											if ($row["COL 10"] == "Yes")
+											{
 
 											echo '<td>' . '
-												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Yes"> Yes 
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Yes" checked="checked"> Yes 
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No"> No
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Dil"> Dil
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Not Available"> Not Available
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No Response" > No Response
+												' . '</td>';										
+											}
+											elseif ($row["COL 10"] == "No"){
+											echo '<td>' . '
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Yes" > Yes 
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No" checked="checked"> No
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Dil"> Dil
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Not Available"> Not Available
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No Response" > No Response
+												' . '</td>';
+											}
+											elseif ($row["COL 10"] == "Dil"){
+											echo '<td>' . '
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Yes" > Yes 
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No"> No
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Dil" checked="checked"> Dil
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Not Available"> Not Available
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No Response" > No Response
+												' . '</td>';
+											}
+											elseif ($row["COL 10"] == "Not Avai"){
+											echo '<td>' . '
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Yes" > Yes 
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No"> No
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Dil"> Dil
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Not Available" checked="checked"> Not Available
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No Response" > No Response
+												' . '</td>';
+											}
+											else{
+											echo '<td>' . '
+												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Yes" > Yes 
 												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No"> No
 												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Dil"> Dil
 												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="Not Available"> Not Available
 												<input type="radio" name="' .$row["COL 1"] .'"' .$row["COL 1"] .'" value="No Response" checked="checked"> No Response
 												' . '</td>';
-
+											}
 											echo '<td>' .$row["COL 12"] . '</td>';
 											echo '</tr>';
 
