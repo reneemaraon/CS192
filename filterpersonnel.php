@@ -151,7 +151,42 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `DIRINFO` ORDER BY ID LIMIT 500";
+								$sql = "SELECT * FROM `DIRINFO` WHERE";
+								$cat = "";
+
+								if ($_POST['year']!=""){
+									$cat.=" YEAR = ".$_POST['year'];
+								}
+
+								if ($_POST['name']!=""){
+									if ($cat==""){
+										$cat.=" NAME LIKE %".$_POST['name']."% ";
+									}
+									else{
+										$cat.=" AND NAME LIKE %".$_POST['name']."% ";
+									}
+								}
+
+								if ($_POST['UCODE']!=""){
+									if ($cat==""){
+										$cat.=" UCODE='".$_POST['UCODE']."'";
+									}
+									else{
+										$cat.=" AND UCODE='".$_POST['UCODE']."'";
+									}
+								}
+
+
+								if ($_POST['assignment']!=""){
+									if ($cat==""){
+										$cat.=" ASSG='".$_POST['assignment']."'";
+									}
+									else{
+										$cat.=" AND ASSG='".$_POST['assignment']."'";
+									}
+								}
+								$sql.=$cat;
+								echo $sql;
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
