@@ -7,16 +7,15 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/bootstrap.min.js"></script>
 </head>
-<script type='text/javascript' src='//code.jquery.com/jquery-1.10.1.js'></script>
 <body>
-  	  <?php
-    session_start();
-    if($_SESSION['user']){
-    }
-    else{
-      header('location: login.php');
-    }
-    $user = $_SESSION['user'];
+	  <?php
+	session_start();
+	if($_SESSION['user']){
+	}
+	else{
+	  header('location: login.php');
+	}
+	$user = $_SESSION['user'];
   ?>
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
@@ -38,39 +37,56 @@
 		<div class="row" >
 			<div class="col-sm-2">
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
-						<li><a href="home.php">View List of Personnel</a></li>
+						<li><a href="home.php" class="active">View List of Personnel</a></li>
 						<li><a href="addrecord.php">Add Record</a></li>
-						<li><a href="invitation.php" class="active">Invitation</a></li>
+						<li><a href="invitation.php">Invitation</a></li>
 						<li><a href="response.php">Response</a></li>
 						<li><a href="assignment.php">Assignment</a></li>
 						<li><a href="attendance.php">UPCAT Attendance</a></li>
-
+						<li><a href="Ucode.php">UPCAT Attendance</a></li>
+						<li><b>Under Construction</b></li>
+						<li><a href="Ucode.php">Ucode</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9">
+ 
+
+
+						<div class="container center_div">
+						<form class="form-group row" action='' method="POST">
+						  <fieldset>
+							<div id="legend">
+							</br>
+							</br>
+							  <legend class="">Register</legend>
+							</div>
+							<div class="control-group">
+							  <!-- Full name -->
+							  <label class="control-label"  for="fullname">Full name</label>
+							  <div class="controls">
+								<input type="text" id="fullname" name="fullname" placeholder="" class="input-xlarge">
+							  </div>
+							</div>
+						 
+							<div class="control-group">
+							  <!-- Button -->
+							  <div class="controls">
+								<button class="btn btn-success">Register</button>
+							  </div>
+							</div>
+						  </fieldset>
+						</form>
+
+						</div>
+
+
 						<!-- CONTENT -->
-						<h3> Invitation </h3>
-						<button id="button1" type="button">Write to File</button>
-						<a href="pdf.php">PDF</a>
+						<h3> UCODE </h3>
 						<br>
 						<form class="form-inline">
-							<label class="sr-only" for="inlineFormInput">Year</label>
-							<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Year">
-
-							<label class="sr-only" for="inlineFormInputGroup">Name</label>
-							<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Name">
-
-						
-							<label class="sr-only" for="inlineFormInputGroup">UCODE</label>
-							<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="UCODE">
-
-
-							<button type="submit" class="btn btn-primary">Search</button>
-							 </form>
-
 							<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 
-							<table class="table">
+							<table class="table" id="myTable">
 								<thead>
 									<tr>
 										<th style="text-align:center">ID</th>
@@ -100,26 +116,26 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `DIRINFO`  LIMIT 10, 20" ;
+								$sql = "SELECT * FROM `UCODE T`";
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
 										// output data of each row
-
-
 										while($row = $result->fetch_assoc()) {
 
 												echo '<tr>';
-												echo '<td align="center">' .$row["ID"] . '</td>'; 
-												echo '<td align="center">' .$row["STATUS"] . '</td>';
-												echo '<td align="center">' .$row["NAME"] . '</td>';
-												echo '<td align="center">' .$row["UCODE"] . '</td>';
-												echo '<td align="center">' .$row["NYR"] . '</td>';
-												echo '<td align="center">' .$row["YEAR"] . '</td>';
-												echo '<td align="center">' .$row["TCTRCODE"] . '</td>';
-												echo '<td align="center">' .$row["testcenter"] . '</td>';
-												echo '<td align="center">' .$row["ASSG"] . '</td>';
-												echo '<td align="center"><a href="viewprofile.php?id='.$row["ID"].'">View Profile</a></td>';
+												echo '<td align="center">' .$row["UNITID"] . '</td>'; 
+												echo '<td align="center">' .$row["UCODE"] . '</td>'; 
+												echo '<td align="center">' .$row["SYS_DIL"] . '</td>'; 
+												echo '<td align="center">' .$row["UNIT"] . '</td>'; 
+												echo '<td align="center">' .$row["COLL"] . '</td>'; 
+												echo '<td align="center">' .$row["COLLUNIT"] . '</td>'; 
+												echo '<td align="center">' .$row["Location"] . '</td>'; 
+												echo '<td align="center">' .$row["ADDR1"] . '</td>'; 
+												echo '<td align="center">' .$row["ADDR2"] . '</td>'; 
+												echo '<td align="center">' .$row["ADDR3"] . '</td>'; 
+												echo '<td align="center">' .$row["thru"] . '</td>'; 
+
 												// '<div class="dropdown">
 												//   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile
 												//   <span class="caret"></span></button>
@@ -139,7 +155,7 @@
 								}
 
 
-								
+								$conn->close();
 								?>
 								<!--Filter-->
 								<script>
@@ -149,7 +165,6 @@
 										filter = input.value.toUpperCase();
 										table = document.getElementById("myTable");
 										tr = table.getElementsByTagName("tr");
-
 										for (i = 0; i < tr.length; i++) {
 											td = tr[i].getElementsByTagName("td")[0];
 											if (td) {
@@ -162,61 +177,10 @@
 										}
 									}
 								</script>
-								<script type='text/javascript'>
-								$('#button1').click(function(){
-								 $.ajax({
-								 type: "POST",
-								 url: "generate_pdf.php",
-								 data: "",
-								 success: function(msg){
-								     alert(msg);
-								 },
-								 error: function(XMLHttpRequest, textStatus, errorThrown) {
-								    alert("Some error occured");
-								 }
-								 });
-								});
-								</script>
 								</tbody>
 							</table>
 			</div>
 		</div>
 </div>
 </body>
-<?php
-$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-
-$txt = "Jane Doe\n";
-fwrite($myfile, $txt);
-
-
-if ($result->num_rows > 0) {
-		// output data of each row
-
-
-		while($row = $result->fetch_assoc()) {
-			$txt = "Jane Doe\n";
-		fwrite($myfile, $txt);
-				echo '<tr>';
-				echo '<td align="center">' .$row["ID"] . '</td>'; 
-				echo '<td align="center">' .$row["STATUS"] . '</td>';
-				echo '<td align="center">' .$row["NAME"] . '</td>';
-				echo '<td align="center">' .$row["UCODE"] . '</td>';
-				echo '<td align="center">' .$row["NYR"] . '</td>';
-				echo '<td align="center">' .$row["YEAR"] . '</td>';
-				echo '<td align="center">' .$row["TCTRCODE"] . '</td>';
-				echo '<td align="center">' .$row["testcenter"] . '</td>';
-				echo '<td align="center">' .$row["ASSG"] . '</td>';
-				echo '<td align="center"><a href="viewprofile.php?id='.$row["ID"].'">View Profile</a></td>';
-							
-				echo '</tr>';
-		}
-}
-
-
-$conn->close();
-
-
-fclose($myfile);
-?>
 </html>
