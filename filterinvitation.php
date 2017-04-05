@@ -124,8 +124,6 @@
 
 							<button type="submit" class="btn btn-primary">Filter</button>
 							 </form>
-							 <br><br>
-							 <button type="submit" for="toInvite" class="btn btn-success">Save Changes</button>
 
 							 <br><br>
 							<table class="table">
@@ -160,7 +158,49 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `invites` LIMIT 100" ;
+								$sql = "SELECT * FROM `invites` WHERE " ;
+
+								$cat = "";
+
+								if ($_POST['year']!=""){
+									$cat.=" yrservice = ".$_POST['year'];
+								}
+
+								if ($_POST['name']!=""){
+									if ($cat==""){
+										$cat.=" tblName LIKE %".$_POST['name']."% ";
+									}
+									else{
+										$cat.=" AND tblName LIKE %".$_POST['name']."% ";
+									}
+								}
+
+								if ($_POST['UCODE']!=""){
+									if ($cat==""){
+										$cat.=" UCODE='".$_POST['UCODE']."'";
+									}
+									else{
+										$cat.=" AND UCODE='".$_POST['UCODE']."'";
+									}
+								}
+
+
+								if ($_POST['assignment']!=""){
+									if ($cat==""){
+										$cat.=" ASSG='".$_POST['assignment']."'";
+									}
+									else{
+										$cat.=" AND ASSG='".$_POST['assignment']."'";
+									}
+								}
+
+								if ($cat==""){
+									$sql = "SELECT * from invites ORDER by invite";
+								}
+
+								$sql.=$cat;
+								$sql.="LIMIT 10";
+
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
@@ -178,7 +218,8 @@
 												echo '<td align="center">' .$row["TCTRCODE"] . '</td>';
 												echo '<td align="center">' .$row["testcenter"] . '</td>';
 												echo '<td align="center">
-												 <div class="form-group" id ="toInvite">
+												<form action="updateinvites.php" method="POST" id="toInvite">
+												 <div class="form-group">
 												  <select class="form-control" id="assg">';
 
 													echo '<option'; if ($row["ASSG"]=='A'){echo ' selected="selected"';} echo ">A</option>";
@@ -203,7 +244,7 @@
 													echo '
 
 												  </select>
-													</td>';
+												</div> </td>';
 												echo '<td align = "center"><div class="checkbox"><label><input type="checkbox"';
 													if ($row["invite"]==-1){
 														echo 'checked="checked"';
@@ -213,7 +254,7 @@
 													if ($row["firsttimer"]==-1){
 														echo 'checked="checked"';
 													}
-												echo '></div></td>	</div> ';	
+												echo '></div></td> </form>';	
 
 												//as;dlja;slkdj
 												// '<div class="dropdown">
@@ -234,7 +275,7 @@
 										echo "0 results";
 								}
 
-
+							 echo '<button type="submit" for="toInvite" class="btn btn-success">Save Changes</button>';
 								
 								?>
 								<!--Filter-->
