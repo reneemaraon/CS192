@@ -38,11 +38,10 @@
 			<div class="col-sm-2">
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
 						<li><a href="home.php" class="active">Records</a></li>
-						<li><a href="rates.php">Rates</a></li>
-						<li><a href="ucode.php">Ucode</a></li>
-						<li><a href="testingcenter.php">Testing Center</a></li>
-						<li><a href="assignment.php">Assignment</a></li>
-						<li><a href="attendance.php">UPCAT Attendance</a></li>
+						<li><a href="Rates">Rates</a></li>
+						<li><a href="Ucode">Ucode</a></li>
+						<li><a href="Testingcenter">Testing Center</a></li>
+
 
 				</ul>
 			</div>
