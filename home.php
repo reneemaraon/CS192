@@ -25,8 +25,8 @@
 		<a class="navbar-brand" href="#">UP Office of Admissions</a>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Records</a></li>
+			<li><a href="profile.php">Profile</a></li>
+			<li><a href="Rates">Records</a></li>
 			<li><a href="logout.php">Logout</a></li>
 		</ul>
 	</div>
