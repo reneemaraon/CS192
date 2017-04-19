@@ -160,10 +160,10 @@
 
 								if ($_POST['name']!=""){
 									if ($cat==""){
-										$cat.=" NAME LIKE %".$_POST['name']."% ";
+										$cat.=" NAME LIKE '%".$_POST['name']."%' ";
 									}
 									else{
-										$cat.=" AND NAME LIKE %".$_POST['name']."% ";
+										$cat.=" AND NAME LIKE '%".$_POST['name']."%' ";
 									}
 								}
 
@@ -186,7 +186,7 @@
 									}
 								}
 								$sql.=$cat;
-								echo $sql;
+								// echo $sql;
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {

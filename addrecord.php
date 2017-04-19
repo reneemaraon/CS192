@@ -53,7 +53,8 @@
 
 				<form METHOD="POST">
 				<h3>Personal Details</h3>
-				<div class="form-group">
+				
+				<!-- <div class="form-group">
 					<label for="IDno">ID No</label>
 					<select class="form-control" id="IDno" name="IDno">
 						<option>12345</option>
@@ -61,7 +62,7 @@
 					</select>
 				</div>
 				</br>
-				
+				 -->
 
 				<b>Image </b></br><input type = "file"; name = "image"><br>
 				<div class="form-group">
@@ -113,6 +114,11 @@
 				</div>
 				
 				<div class="form-group">
+					<label for="status">Status</label>
+					<input type="text" class="form-control" id="status" name="status">
+				</div>
+
+				<div class="form-group">
 					<label for="address">Address</label>
 					<input type="text" class="form-control" id="address" name="address">
 				</div>
@@ -122,54 +128,261 @@
 					<input type="text" class="form-control" id="tel" name="tel">
 				</div>
 				
-				
-				Mobile No. <input type = "text"; name = "mobileno"; size = "30"><br>
-				Email Address <input type = "text"; name = "emailadd"; size = "30"><br>
+				<div class="form-group">
+					<label for="mobileno">Mobile Number</label>
+					<input type="text" class="form-control" id="mobileno" name="mobileno">
+				</div>				
+
+
+				<div class="form-group">
+					<label for="mobileno">Email Address</label>
+					<input type="text" class="form-control" id="emailadd" name="emailadd">
+				</div>				
+				<br>
+
 				<h3>Educational Attainment</h3>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EDUCATION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCHOOL<br>
-				1. <input type = "text"; name = "educ1"; size = "20"><input type = "text"; name = "year1"; size = "11"><input type = "text"; name = "school1"; size = "20"><br>
-				2. <input type = "text"; name = "educ2"; size = "20"><input type = "text"; name = "year2"; size = "11"><input type = "text"; name = "school2"; size = "20"><br>
-				3. <input type = "text"; name = "educ3"; size = "20"><input type = "text"; name = "year3"; size = "11"><input type = "text"; name = "school3"; size = "20"><br>
+				
+
+				<div class="col-sm-3">
+					<div class="row">
+					<div class="form-group">
+						<label for="educ1">Education</label>
+						<input type="text" class="form-control" id="educ1" name="educ1">
+					</div>				
+					<br>
+					</div>
+					<div class="row">
+					<div class="form-group">
+						<input type="text" class="form-control" id="educ2" name="educ2">
+					</div>				
+					<br>
+					</div>
+					<div class="row">
+					<div class="form-group">
+						<input type="text" class="form-control" id="educ3" name="educ3">
+					</div>				
+					<br>
+					</div>
+				</div>
+
+				
+				<div class="col-sm-2">
+					<div class="row">
+					<div class="form-group">
+						<label for="year1">Year</label>
+						<input type="text" class="form-control" id="year1" name="year1">
+					</div>				
+					<br>
+					</div>
+					<div class="row">
+					<div class="form-group">
+						<input type="text" class="form-control" id="year2" name="year2">
+					</div>				
+					<br>
+					</div>
+					<div class="row">
+					<div class="form-group">
+						<input type="text" class="form-control" id="year3" name="year3">
+					</div>				
+					<br>
+					</div>
+				</div>
+
+
+				<div class="col-sm-7">
+					<div class="row">
+					<div class="form-group">
+						<label for="school1">School</label>
+						<input type="text" class="form-control" id="school1" name="school1">
+					</div>				
+					<br>
+					</div>
+					<div class="row">
+					<div class="form-group">
+						<input type="text" class="form-control" id="school2" name="school2">
+					</div>				
+					<br>
+					</div>
+					<div class="row">
+					<div class="form-group">
+						<input type="text" class="form-control" id="school3" name="school3">
+					</div>				
+					<br>
+					</div>
+				</div>
+
+
+				<br>
+				<br>
 
 				<h3>Employment</h3>
-				Faculty Rank/Designation <input type = "text"; name = "facultyrank"; size = "30"><br>
-				Faculty/Admin/Research <input type = "text"; name = "facultyadminresearch"; size = "30"><br>
-				Salary Grade <input type = "text"; name = "salarygrade"; size = "5"><br>
-				Tenure <select name = "Tenure"><option>Permanent<option>Temporary<option>Contractual<option>Casual<option>Others</select><br>
-				Employee No. <input type = "text"; name = "employeeno"; size = "30"><br>
-				Unit Code <select name = "unitcode"><option></select><input type = "text"; name = "unit code"; size = "30"><br>
-				Unit ID <select name = "unitid"><option></select><input type = "text"; name = "unit code"; size = "30"><br>
-				Tel No. (Ofc) <input type = "text"; name = "telnoofc"; size = "30"><br>
-				Tin No. <input type = "text"; name = "tinno"; size = "30"><br>
-				Bank <input type = "text"; name = "bank"; size = "30"><br>
-				ATM No. <input type = "text"; name = "atmno"; size = "30"><br>
+
+				<br>
+
+
+				<div class="form-group">
+					<label for="facultyrank">Faculty Rank/Designation</label>
+					<input type="text" class="form-control" id="facultyrank" name="facultyrank">
+				</div>				
+
+				<div class="form-group">
+					<label for="facultyadminresarch">Faculty/Admin/Research</label>
+					<input type="text" class="form-control" id="facultyadminresarch" name="facultyadminresarch">
+				</div>				
+
+				<div class="form-group">
+					<label for="salarygrade">Salary Grade</label>
+					<input type="text" class="form-control" id="salarygrade" name="salarygrade">
+				</div>				
+
+				<div class="form-group">
+					<label for="Tenure">Name Tag</label>
+					<select class="form-control" id="Tenure" name="Tenure">
+						<option>Permanent</option>
+						<option>Temporary</option>
+						<option>Contractual</option>
+						<option>Casual</option>
+						<option>Others</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="employeeno">Employee No.</label>
+					<input type="text" class="form-control" id="employeeno" name="employeeno">
+				</div>				
+
+				<div class="form-group">
+					<label for="unitcode">Unit Code</label>
+					<input type="text" class="form-control" id="unitcode" name="unitcode">
+				</div>				
+
+				<div class="form-group">
+					<label for="unitid">Unit ID</label>
+					<input type="text" class="form-control" id="unitid" name="unitid">
+				</div>				
+
+				<div class="form-group">
+					<label for="telnoofc">Tel No. (Ofc)</label>
+					<input type="text" class="form-control" id="telnoofc" name="telnoofc">
+				</div>				
+
+				<div class="form-group">
+					<label for="tinno">Tin No.</label>
+					<input type="text" class="form-control" id="tinno" name="tinno">
+				</div>				
+
+				<div class="form-group">
+					<label for="atmno">ATM No.</label>
+					<input type="text" class="form-control" id="atmno" name="atmno">
+				</div>				
+
+				<br>
 				<h3>Health/Medical Info</h3>
-				1.<br><input type="checkbox"; name="allergicrhinitis">Allergic Rhinitis<br>
-				<input type="checkbox"; name="allergies">Allergies<input type = "text"; name = "allergies"; size = "10"><br>
-				2.<br><input type="checkbox"; name="asthma">Asthma<br>
-				<input type="checkbox"; name="tuberculosis">Tuberculosis<br>
-				<input type="checkbox"; name="primarycomplex">Primary Complex<br>
-				<input type="checkbox"; name="urti">URTI<br>
-				3. <br><input type="checkbox"; name="hypertension">Hypertension<br>
-				<input type="checkbox"; name="coronaryproblems">Coronary Problems<br>
-				4. <br><input type="checkbox"; name="migraines">Migraines<br>
-				<input type="checkbox"; name="vertigo">Vertigo<br>
-				5. <br><input type="checkbox"; name="diabetes">Diabetes<br>
-				<input type="checkbox"; name="renalfailure">Renal Failure<br>
-				<input type="checkbox"; name="jaundice">Jaundice/Kidney Disorder<br>
-				6. <br><input type="checkbox"; name="dysthemia">Dysthemia<br>
-				<input type="checkbox"; name="bipolardisorder">Bipolar Disorder<br>
-				<input type="checkbox"; name="phobias">Phobias<input type = "text"; name = "phobias"; size = "10"><br>
+				<br>
+				<div class="col-sm-6">
+				<h5>1.</h5>
+				<div class="form-group">
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="allergicrhinitis" value="">Allergic Rhinitis</label>
+					</div>
+					<div class="checkbox">
+					  	<label class="inline"><input type="checkbox" name="allergies" value="">Allergies</label>
+						<input class="inline" type="text" id="allergiesspecs" name="allergiesspecs">
+					</div>
+				</div>				
+
+
+				<h5>2.</h5>
+				<div class="form-group">
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="asthma" value="">Asthma</label>
+					</div>
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="tuberculosis" value="">Tuberculosis</label>
+					</div>
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="primarycomplex" value="">Primary Complex</label>
+					</div>
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="urti" value="">URTI</label>
+					</div>
+				</div>
+				
+				<h5>3.</h5>
+				<div class="form-group">
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="hypertension" value="">Hypertension</label>
+					</div>
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="coronaryproblems" value="">Coronary Problems</label>
+					</div>
+				</div>		
+
+				</div>
+				<div class="col-sm-6">
+				<div class="row">
+				<h5>4.</h5>
+				<div class="form-group">
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="migraines" value="">Migraines</label>
+					</div>
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="vertigo" value="">Vertigo</label>
+					</div>
+				</div>
+				</div>
+				<h5>5.</h5>
+				<div class="form-group">
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="diabetes" value="">Diabetes</label>
+					</div>
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="renalfailure" value="">Renal Failure</label>
+					</div>
+				</div>
+
+				<h5>6.</h5>
+				<div class="form-group">
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="dysthemia" value="">Dysthemia</label>
+					</div>
+					<div class="checkbox">
+					  	<label><input type="checkbox" name="renalfailure" value="">Bipolar Disorder</label>
+					</div>
+				</div>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+
+				</div>
+
 				<h3>Vital Signs</h3>
-				Height <input type = "text"; name = "height"; size = "5"><br>
-				Weight <input type = "text"; name = "weight"; size = "5"><br>
-				BP <input type = "text"; name = "bp"; size = "5"><br>
+
+				<div class="form-group">
+					<label for="height">Height</label>
+					<input type="text" class="form-control" id="height" name="height">
+				</div>		
+
+				<div class="form-group">
+					<label for="weight">Weight</label>
+					<input type="text" class="form-control" id="weight" name="weight">
+				</div>		
+
+
+				<div class="form-group">
+					<label for="bp">BP</label>
+					<input type="text" class="form-control" id="bp" name="bp">
+				</div>		
 				<input type = "submit"; name = "submit"; value = "Submit">
 				</form>
+				</div>
 
 							</div>
 						</div>
 				</div>
+
 </body>
 </html>
 
@@ -185,7 +398,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $nametag = mysql_real_escape_string($_POST['nametag']);
   $lastName = mysql_real_escape_string($_POST['lastName']);
   $firstName = mysql_real_escape_string($_POST['firstName']);
+  $name=mysql_real_escape_string($firstName.' '.$lastName);
   $middleName = mysql_real_escape_string($_POST['middleName']);
+  $status = mysql_real_escape_string($_POST['status']); 
   $suffix = mysql_real_escape_string($_POST['suffix']);
   $sex = mysql_real_escape_string($_POST['sex']);
   $bday = mysql_real_escape_string($_POST['bday']);
@@ -210,11 +425,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $employeeno = mysql_real_escape_string($_POST['employeeno']);
   $facultyrank = mysql_real_escape_string($_POST['facultyrank']);
   $facultyadminresearch = mysql_real_escape_string($_POST['facultyadminresearch']);
+  $telnoofc = mysql_real_escape_string($_POST['telnoofc']);
   $salarygrade = mysql_real_escape_string($_POST['salarygrade']);
   $employeeno = mysql_real_escape_string($_POST['employeeno']);
   $unitcode = mysql_real_escape_string($_POST['unitcode']);
   $unitid = mysql_real_escape_string($_POST['unitid']);
-  $telnoofc = mysql_real_escape_string($_POST['telnoofc']);
   $tinno = mysql_real_escape_string($_POST['tinno']);
   $bank = mysql_real_escape_string($_POST['bank']);
   $atmno = mysql_real_escape_string($_POST['atmno']);
@@ -253,7 +468,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 //coronaryProb migranes vertigo diabetes renalfailure jaundice dysthemia bipolar phobias phobia_spec hgt wgt bp med_others med_treatment ATM NO TIN NO BANK_ID 
 if($bool){
   $insert = mysql_query("INSERT INTO `DIRINFO` (`ID`, `NAME`, `STATUS`, `LASTNAME`, `FIRSTNAME`, `MIDDLENAME`, `MIDDLEINIT`, `NAMETAG`, `EXTNAME`, `SEX`, `BIRTHDATE`, `TEL1`, `CELFONE`, `EMAIL`, `HOMEADDR`, `EDUC1`, `EDUCYR1`, `SCHOOL1`, `EDUC2`, `EDUCYR2`, `SCHOOL2`, `EDUC3`, `EDUCYR3`, `SCHOOL3`, `POSITION`, `SG`, `TENURE`, `EmployeeNo`, `UNITID`, `TEL2`, `TIN NO`, `ATM NO`, `BANK`) 
-  	VALUES ('$IDno', NULL, NULL, '$lastName', '$firstName', '$middleName', NULL, '$nametag', '$suffix', '$sex', '$bday', '$tel', '$mobileno','$emailadd', '$address', '$educ1', '$year1' , '$school1','$educ2', '$year2' , '$school2', '$educ3', '$year3' , '$school3', '$facultyrank', '$salarygrade', '$Tenure', '$employeeno', '$unitid', '$telnoofc', '$tinno', '$atmno', '$bank');");
+  									VALUES ('$IDno', '$name', '$status', '$lastName', '$firstName', '$middleName', '$middleName[0]', '$nametag', '$suffix', '$sex', '$bday', '$tel', '$mobileno','$emailadd', '$address', '$educ1', '$year1' , '$school1','$educ2', '$year2' , '$school2', '$educ3', '$year3' , '$school3', '$facultyrank', '$salarygrade', '$Tenure', '$employeeno', '$unitid', '$telnoofc', '$tinno', '$atmno', '$bank');");
   Print '<script>alert("Successfully Registered!");</script>'; // Prompts the user
 
   if (!$insert) echo mysql_error();
