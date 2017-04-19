@@ -37,11 +37,19 @@
 		<div class="row" >
 			<div class="col-sm-2">
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
+<<<<<<< HEAD
 						<li><a href="rates.php" class="active">Rates</a></li>
 						<li><a href="ucode.php">Ucode</a></li>
 						<li><a href="testingcenter.php">Testing Center</a></li>
 						<li><a href="assignment.php">Assignment</a></li>
 						<li><a href="attendance.php">UPCAT Attendance</a></li>
+=======
+						<li><a href="home.php" class="active">Records</a></li>
+						<li><a href="Rates">Rates</a></li>
+						<li><a href="Ucode">Ucode</a></li>
+						<li><a href="Testingcenter">Testing Center</a></li>
+
+>>>>>>> a52406b7550c7d3465ab7ea2963bbf5608e179a1
 
 				</ul>
 			</div>

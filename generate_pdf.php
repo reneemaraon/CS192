@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT * FROM `DIRINFO`  LIMIT 10, 20" ;
+$sql = "SELECT * FROM `Invites`" ;
 $result = $conn->query($sql);
 
 $myfile = fopen("abc.txt", "w") or die("Unable to open file!");
@@ -25,21 +25,24 @@ if ($result->num_rows > 0) {
 
 		while($row = $result->fetch_assoc()) {
 		
-		fwrite($myfile, $row["ID"]);
+
+		if($row["invite"] != 0)
+		{
+		fwrite($myfile, $row["id"]);
 		fwrite($myfile, ";");
-		fwrite($myfile, $row["STATUS"]);
+		fwrite($myfile, $row["tblName"]);
 		fwrite($myfile, ";");
-		fwrite($myfile, $row["NAME"]);
+		fwrite($myfile, $row["yrservice"]);
 		fwrite($myfile, ";");
-		fwrite($myfile, $row["YEAR"]);
+		fwrite($myfile, $row["numyears"]);
+		fwrite($myfile, ";");
+		fwrite($myfile, $row["invite"]);
+		fwrite($myfile, ";");
+		fwrite($myfile, $row["UCODE"]);
 		fwrite($myfile, ";");
 		fwrite($myfile, $row["TCTRCODE"]);
-		fwrite($myfile, ";");
-		fwrite($myfile, $row["testcenter"]);
-		fwrite($myfile, ";");
-		fwrite($myfile, $row["ASSG"]);
 		fwrite($myfile, "\n");
-
+		}
 }
 }
 
