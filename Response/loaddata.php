@@ -65,7 +65,7 @@ $grid->addColumn('action', 'Action', 'html', NULL, false, 'id');
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : 'Invites';
                                                                        
-$result = $mysqli->query('SELECT * FROM '.$mydb_tablename.' WHERE invite=1');
+$result = $mysqli->query('SELECT * FROM '.$mydb_tablename.' WHERE invite in (1,-1)');
 $mysqli->close();
 
 // send data to the browser
