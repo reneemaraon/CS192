@@ -54,7 +54,6 @@ $grid = new EditableGrid();
 *  Add columns. The first argument of addColumn is the name of the field in the databse. 
 *  The second argument is the label that will be displayed in the header
 */
-$grid->addColumn('id', 'ID', 'integer', NULL, false); 
 $grid->addColumn('UCODE', 'UCODE', 'string');
 $grid->addColumn('SYS_DIL', 'SYS_DIL', 'string');
 $grid->addColumn('UNIT', 'UNIT', 'string');  
@@ -66,7 +65,6 @@ $grid->addColumn('ADDR1', 'ADDR1', 'string');
 $grid->addColumn('ADDR2', 'ADDR2', 'string');
 $grid->addColumn('ADDR3', 'ADDR3', 'string');
 $grid->addColumn('thru', 'thru', 'string');
-$grid->addColumn('action', 'Action', 'html', NULL, false, 'id');  
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : '`UCODE T`';
                                                                        

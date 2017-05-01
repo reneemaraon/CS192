@@ -54,7 +54,6 @@ $grid = new EditableGrid();
 *  Add columns. The first argument of addColumn is the name of the field in the databse. 
 *  The second argument is the label that will be displayed in the header
 */
-$grid->addColumn('id', 'ID', 'integer', NULL, false); 
 $grid->addColumn('TctrCode', 'TctrCode', 'integer');
 $grid->addColumn('tctr_tag', 'tctr_tag', 'string');
 $grid->addColumn('LVM_tag', 'LVM_tag', 'string');
@@ -72,7 +71,6 @@ $grid->addColumn('Max_P', 'Min_P', 'string');
 $grid->addColumn('Total_N', 'Total_N', 'integer');
 $grid->addColumn('tag', 'tag', 'string');
 
-$grid->addColumn('action', 'Action', 'html', NULL, false, 'id');  
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : 'TestCenters';
                                                                        
