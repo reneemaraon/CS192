@@ -62,21 +62,23 @@
 			      
 			          $query = mysql_query("SELECT * FROM DIRINFO WHERE ID='$pid' ");
 			          $row = mysql_fetch_array($query);
-
-
-			          echo '<h5 class="specialcolor"><b> Profile ID No : '.$row['ID']."</h5><br>";
+			          $save = $row;
+    				  
+			          echo '<div class="specialcolor"><b> Profile ID No : '.$row['ID']."</div><br><br>";
+			    	  echo '<center>';
 			        }
-			    ?>
-			    	<center>
-				    <img src="pics/NoImage.JPG" width="200px">
+			    			if ($row['memPropertyPhotoLink'] ==''){
+				    			echo '<img src="pics/NoImage.JPG" width="200px">';
+			    			}
+			    			else{
+			    				echo '<img src="Photos/UPCAT photo/'.$row['memPropertyPhotoLink'].'" width="200px">';
+			    			}
+			    	  echo	'<br><br><a href="editprofile.php?id='.$pid.'" role="button" class="btn btn-danger">Edit Profile</a>';
+			    		?>
 					</center>
 					<br>
 					<br>
-					<div class="btn-group btn-group-justified">
-				    <a href="#" class="btn btn-primary">Add Image</a>
-				    <a href="#" class="btn btn-primary">Delete Image</a>
-					</div>
-					<br>
+
 
 				    <?php
 				    	echo '<h5><b>Name :</b> '.$row['NAME'].'</h4>';
@@ -219,7 +221,8 @@
 
 								$sql = "SELECT * FROM `CATDIREC` WHERE ID='$pid'";
 								$result = $conn->query($sql);
-
+								$sql2 = "SELECT * FROM childdependent WHERE emp_idno='$pid'";
+								$children = $conn->query($sql2);
 								if ($result->num_rows > 0) {
 										// output data of each row
 										while($row = $result->fetch_assoc()) {
@@ -238,13 +241,130 @@
 										echo "0 results";
 								}
 
-
+			      
 								$conn->close();
 
 								?>
 						</tbody>
 					</table>
 
+				</div>
+				<br>
+
+				<h3 class="specialcolor">Partners</h3>
+				<br>
+				<br>
+				<h3 class="specialcolor">Educational Attainment</h3>
+				<table class="table">
+					<thead>
+						<tr class="specialcolor">
+							<th> </th>
+							<th style="text-align:center">Degree</th>
+							<th style="text-align:center">Year</th>
+							<th style="text-align:center">School</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						echo'<tr>
+							<td><b>Baccalaureate</b></td>';
+						echo '<td align="center">'.$save['EDUC1'].'</td>';						
+						echo '<td align="center">'.$save['EDUCYR1'].'</td>';
+						echo '<td align="center">'.$save['SCHOOL1'].'</td>';
+						echo '</tr>';
+
+						echo'<tr>
+							<td><b>Masters</b></td>';
+						echo '<td align="center">'.$save['EDUC2'].'</td>';						
+						echo '<td align="center">'.$save['EDUCYR2'].'</td>';
+						echo '<td align="center">'.$save['SCHOOL2'].'</td>';
+
+						echo'<tr>
+							<td><b>Doctoral</b></td>';
+						echo '<td align="center">'.$save['EDUC3'].'</td>';						
+						echo '<td align="center">'.$save['EDUCYR3'].'</td>';
+						echo '<td align="center">'.$save['SCHOOL3'].'</td>';
+
+						echo '</tr>';						
+						?>
+					</tbody>
+
+				</table>
+				<br>
+				<h3 class="specialcolor">Medical Info</h3><br>
+					<div class="col-sm-6">
+					<?php 
+						$listofsakit = ["Allergic Rhinitis","Allergies","Asthma","Tuberculosis","Primary Complex","URTI","Hypertension","Coronary Problems","Migraines","Vertigo","Diabetes","Renal Failure","Dysthemia","Bipolar Disorder"];
+						$vals = [$save['allergicRhin'],$save['Allergies'],$save['asthma'],$save['tb'],$save['pc'],$save['urti'],$save['hypertension'],$save['coronaryProb'],$save['migranes'],$save['vertigo'],$save['diabetes'],$save['renalfailure'],$save['dysthemia'],$save['bipolar']];
+						$photostr="";
+						// $hi = len(listofsakit);
+						for ($i=0; $i<7; $i++){
+							if (($vals[$i]==0)||($vals[$i]==0)){
+								$photostr="xmark.png";
+							}
+							else{
+								$photostr="check.png";
+							}
+							echo '<img src="Photos/'.$photostr.'" width="15px">     	  '.$listofsakit[$i].'<br>';
+							
+						}
+						echo '</div>';
+						echo '<div class = "col-sm-6">';
+						for ($i=7; $i<14; $i++){
+							if (($vals[$i]==0)||($vals[$i]==0)){
+								$photostr="xmark.png";
+							}
+							else{
+								$photostr="check.png";
+							}
+							echo '<img src="Photos/'.$photostr.'" width="15px">     	  '.$listofsakit[$i].'<br>';
+							
+						}
+					?>
+
+				</div>
+				<br><br><br><br><br><br>
+				<br>
+				<br>
+				<h3 class="specialcolor">Vital Signs</h3>
+				<div class= "col-sm-12">
+				<?php
+					echo '<h5><b>Height:</b>   '.$save['hgt'].'</h5>';
+					echo '<h5><b>Weight:</b>   '.$save['wgt'].'</h5>';
+					echo '<h5><b>BP:</b>   '.$save['bp'].'</h5><br>';
+
+				?>
+				</div>
+				<br><br><br><br>
+
+
+				<h3 class="specialcolor">Children</h3>
+				<div class="col-sm-12">
+					<table class ="table">
+						<thead>
+							<tr>
+								<th style="text-align:center">Name</th>
+								<th style="text-align:center">Year of Birth</th>
+							</tr>
+						</thead>
+						<tbody>
+					<?php
+						if ($children->num_rows > 0) {
+								// output data of each row
+								while($row = $children->fetch_assoc()) {
+										echo '<tr>';
+										echo '<td align="center">'.$row['anak_name'].'</td>';
+										echo '<td align="center">'.$row['bdate'].'</td>';
+										echo '</tr>';
+
+								}
+						} else {
+								echo "0 children";
+						}
+					?>
+					<tbody>
+					</table>
 				</div>
 
 			</div>

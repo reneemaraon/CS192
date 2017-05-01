@@ -151,7 +151,7 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `DIRINFO` ORDER BY ID LIMIT 500";
+								$sql = "SELECT * FROM `DIRINFO` ORDER BY NYR DESC LIMIT 500";
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
@@ -168,7 +168,7 @@
 												echo '<td align="center">' .$row["TCTRCODE"] . '</td>';
 												echo '<td align="center">' .$row["testcenter"] . '</td>';
 												echo '<td align="center">' .$row["ASSG"] . '</td>';
-												echo '<td align="center"><a href="viewprofile.php?id='.$row["ID"].'">View Profile</a></td>';
+												echo '<td align="center"><a href="viewprofile.php?id='.$row["ID"].'">Profile</a></td>';
 												// '<div class="dropdown">
 												//   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile
 												//   <span class="caret"></span></button>
