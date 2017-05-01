@@ -24,9 +24,9 @@
 		<a href="#" class="navbar-left"><img src="pics/logo.png" width="40px" hspace="20px" vspace="5px"></a>
 		<a class="navbar-brand" href="#">UP Office of Admissions</a>
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="records.php">Records</a></li>
+			<li class="active"><a href="home.php">Home</a></li>
+			<li><a href="profile.php">Profile</a></li>
+			<li><a href="Rates">Records</a></li>
 			<li><a href="logout.php">Logout</a></li>
 		</ul>
 	</div>
@@ -152,7 +152,7 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `DIRINFO` ORDER BY id LIMIT 500";
+								$sql = "SELECT * FROM `DIRINFO` ORDER BY NYR DESC LIMIT 500";
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
@@ -169,7 +169,7 @@
 												echo '<td align="center">' .$row["TCTRCODE"] . '</td>';
 												echo '<td align="center">' .$row["testcenter"] . '</td>';
 												echo '<td align="center">' .$row["ASSG"] . '</td>';
-												echo '<td align="center"><a href="viewprofile.php?id='.$row["id"].'">View Profile</a></td>';
+												echo '<td align="center"><a href="viewprofile.php?id='.$row["id"].'">Profile</a></td>';
 												// '<div class="dropdown">
 												//   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile
 												//   <span class="caret"></span></button>

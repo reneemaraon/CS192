@@ -41,7 +41,8 @@
 						<li><a href="addrecord.php" class="active">Add Record</a></li>
 						<li><a href="Invitation">Invitation</a></li>
 						<li><a href="Response">Response</a></li>
-						<li><a href="Assignment">Assignment</a></li>
+						<li><a href="Assignment">Assignment (Regional)</a></li>
+						<li><a href="Assignment_Dil">Assignment (Diliman)</a></li>
 						<li><a href="Attendance">UPCAT Attendance</a></li>
 
 				</ul>

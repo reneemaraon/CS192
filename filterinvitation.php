@@ -26,8 +26,8 @@
 		<a class="navbar-brand" href="#">UP Office of Admissions</a>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Records</a></li>
+			<li><a href="profile.php">Profile</a></li>
+			<li><a href="Rates">Records</a></li>
 			<li><a href="logout.php">Logout</a></li>
 		</ul>
 	</div>
@@ -210,7 +210,7 @@
 										while($row = $result->fetch_assoc()) {
 
 												echo '<tr>';
-												echo '<td align="center">' .$row["ID"] . '</td>'; 
+												echo '<td align="center">' .$row["id"] . '</td>'; 
 												echo '<td align="center">' .$row["tblName"] . '</td>';
 												echo '<td align="center">' .$row["numyears"] . '</td>';
 												echo '<td align="center">' .$row["UCODE"] . '</td>';

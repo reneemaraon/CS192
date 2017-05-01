@@ -39,10 +39,11 @@
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
 						<li><a href="home.php" class="active">View List of Personnel</a></li>
 						<li><a href="addrecord.php">Add Record</a></li>
-						<li><a href="invitation.php">Invitation</a></li>
-						<li><a href="response.php">Response</a></li>
-						<li><a href="assignment.php">Assignment</a></li>
-						<li><a href="attendance.php">UPCAT Attendance</a></li>
+						<li><a href="Invitation">Invitation</a></li>
+						<li><a href="Response">Response</a></li>
+						<li><a href="Assignment">Assignment (Regional)</a></li>
+						<li><a href="Assignment_Dil">Assignment (Diliman)</a></li>
+						<li><a href="Attendance">UPCAT Attendance</a></li>
 
 				</ul>
 			</div>
@@ -194,7 +195,7 @@
 										while($row = $result->fetch_assoc()) {
 
 												echo '<tr>';
-												echo '<td align="center">' .$row["ID"] . '</td>'; 
+												echo '<td align="center">' .$row["id"] . '</td>'; 
 												echo '<td align="center">' .$row["STATUS"] . '</td>';
 												echo '<td align="center">' .$row["NAME"] . '</td>';
 												echo '<td align="center">' .$row["UCODE"] . '</td>';
@@ -203,7 +204,7 @@
 												echo '<td align="center">' .$row["TCTRCODE"] . '</td>';
 												echo '<td align="center">' .$row["testcenter"] . '</td>';
 												echo '<td align="center">' .$row["ASSG"] . '</td>';
-												echo '<td align="center"><a href="viewprofile.php?id='.$row["ID"].'">View Profile</a></td>';
+												echo '<td align="center"><a href="viewprofile.php?id='.$row["id"].'">View Profile</a></td>';
 												// '<div class="dropdown">
 												//   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile
 												//   <span class="caret"></span></button>
