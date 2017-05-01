@@ -59,7 +59,7 @@ $grid->addColumn('tblName', 'Name', 'string');
 
 
 $grid->addColumn('response', 'response', 'string',  ["Yes", "No", "Dil", "Not Available", "No Response"] , false);
-$grid->addColumn('ASSG', 'Assignment', 'string');
+$grid->addColumn('ASSG', 'Assignment', 'string', fetch_pairs($mysqli,'SELECT id, Des_Code FROM Rates WHERE Des_Code in ("RE","RA")'),true );
 $grid->addColumn('Assg_TCTRC', 'Code', 'string', fetch_pairs($mysqli,'SELECT id, TctrCode FROM TestCenters WHERE tctr_tag = "REG"'),true );
 $grid->addColumn('Assg_TestingRoom', 'Test Center', 'string', fetch_pairs($mysqli,'SELECT id, BLDG FROM TestCenters WHERE tctr_tag = "REG"'),true );
 
