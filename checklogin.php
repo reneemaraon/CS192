@@ -19,6 +19,8 @@
       $table_userID = $row['userID'];
       $table_rights = $row['rights'];
       $table_name = $row['name'];
+      $table_email = $row['email'];
+      $table_phone = $row['phone'];
     }
     if(($username == $table_users) && ($password == $table_password)){
       if($password == $table_password){
@@ -26,6 +28,8 @@
         $_SESSION['userID'] = $table_userID;
         $_SESSION['rights'] = $table_rights;
         $_SESSION['name'] = $table_name;
+        $_SESSION['email'] = $table_email;
+        $_SESSION['phone'] = $table_phone;
         header('location: home.php');
       }
     }
