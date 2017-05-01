@@ -63,6 +63,8 @@ $grid->addColumn('ASSG', 'Assignment', 'string', fetch_pairs($mysqli,'SELECT id,
 $grid->addColumn('Assg_TCTRC', 'Code', 'string', fetch_pairs($mysqli,'SELECT id, BLDG FROM TestCenters WHERE tctr_tag = "DIL"'),true );
 $grid->addColumn('Assg_TestingHall', 'Hall', 'string', fetch_pairs($mysqli,'SELECT DISTINCT id, Bldg_desc FROM TestCenters WHERE tctr_tag = "DIL"'),true );
 $grid->addColumn('Assg_TestingRoom', 'Room', 'string', fetch_pairs($mysqli,'SELECT DISTINCT id, Room FROM TestCenters WHERE tctr_tag = "DIL"'),true );
+$grid->addColumn('action', 'Set Room', 'html',true );
+
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : 'Invites';
                                                                        
 $result = $mysqli->query('SELECT * FROM '.$mydb_tablename.' WHERE response in (0,1,2) AND invite in (1,-1)');
