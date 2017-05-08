@@ -56,16 +56,24 @@ $grid = new EditableGrid();
 */
 $grid->addColumn('id', 'ID', 'integer', NULL, false); 
 $grid->addColumn('tblName', 'Name', 'string');
-$grid->addColumn('ASSG', 'Assignment', 'string');
-$grid->addColumn('testcenter', 'Test Center', 'string' );
-$grid->addColumn('ASSG', 'Assignment', 'string');
-$grid->addColumn('br_attend', 'Attendance', 'boolean');
+
+
+$grid->addColumn('response', 'response', 'string',  ["Yes", "No", "Dil", "Not Available", "No Response"] , false);
+$grid->addColumn('job_1', 'Assignment', 'string', fetch_pairs($mysqli,'SELECT id, Des_Code FROM Rates'),true );
+$grid->addColumn('job_2', 'Assignment', 'string', fetch_pairs($mysqli,'SELECT id, Des_Code FROM Rates'),true );
+$grid->addColumn('job_3', 'Assignment', 'string', fetch_pairs($mysqli,'SELECT id, Des_Code FROM Rates'),true );
+$grid->addColumn('job_4', 'Assignment', 'string', fetch_pairs($mysqli,'SELECT id, Des_Code FROM Rates'),true );
+$grid->addColumn('job_5', 'Assignment', 'string', fetch_pairs($mysqli,'SELECT id, Des_Code FROM Rates'),true );
+$grid->addColumn('job_6', 'Assignment', 'string', fetch_pairs($mysqli,'SELECT id, Des_Code FROM Rates'),true );
+$grid->addColumn('job_7', 'Assignment', 'string', fetch_pairs($mysqli,'SELECT id, Des_Code FROM Rates'),true );
+$grid->addColumn('job_8', 'Assignment', 'string', fetch_pairs($mysqli,'SELECT id, Des_Code FROM Rates'),true );
+$grid->addColumn('Assg_TestingRoom', 'Test Center', 'string', fetch_pairs($mysqli,'SELECT id, BLDG FROM TestCenters WHERE tctr_tag = "REG"'),true );
 
 
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : 'Invites';
                                                                        
-$result = $mysqli->query('SELECT * FROM '.$mydb_tablename.' WHERE response in (0,1,2) AND invite in (1,-1)');
+$result = $mysqli->query('SELECT * FROM '.$mydb_tablename.' WHERE response in (0,1) AND invite in (1,-1)');
 $mysqli->close();
 
 // send data to the browser
