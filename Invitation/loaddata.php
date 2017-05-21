@@ -61,7 +61,7 @@ $grid->addColumn('UCODE', 'Unit Code', 'string');
 $grid->addColumn('yrservice', 'Last UPCAT year', 'string');
 $grid->addColumn('TCTRCODE', 'Test Center Code', 'string');
 $grid->addColumn('testcenter', 'Testing Center', 'string');
-$grid->addColumn('ASSG', 'Assignment', 'string',fetch_pairs($mysqli,'SELECT id, Des_Code FROM Rates WHERE Des_Code in ("RE", "RA", "P" ,"PA" ,"A" ,"EP" ,"HSE" ,"E")'),true );
+$grid->addColumn('ASSG', 'Assignment', 'string',fetch_pairs($mysqli,'SELECT id,Des_Code FROM Rates WHERE Des_Code in ("RE", "RA", "P" ,"PA" ,"A" ,"EP" ,"HSE" ,"E")'),true );
 $grid->addColumn('invite', 'Invitation', 'boolean');
 $grid->addColumn('firsttimer', 'First time', 'boolean');
 
