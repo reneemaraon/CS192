@@ -28,8 +28,18 @@
 			data+='<option>PAL</option>'
 			data+='<option>PALex</option>'
 			$("#lines").html(data);		
-			$("#hi").html('char');
+			$("#hi").html(data);
 		}
+	}
+	function changeVal(id,val,tcc){
+			$.ajax({
+				type: "POST",
+				url: "changeval.php",
+				data:'colname='+id+'&val='+val+'&tcc='+tcc,
+				success: function(data){
+					// $("#state-list").html(data);
+				}
+			});
 	}
 </script>
 </head>
@@ -93,9 +103,9 @@
 		 	<br>
 		 	<h3><b>Test Center:</b> <?php echo $save['tcc']; echo " - "; echo $save['TEST CENTER']?> </h3>
 		 	<br>
-		
+		 	<form METHOD="POST">
 			<div class="form-inline">
-				<label for="suffix">Transportation</label>
+				<label for="transpo">Transportation</label>
 				<select class="form-control" id="transpo" name="transpo" onChange="getLines(this.value);">
 					<option>Select Mode</option>
 					<option <?php if ($flightdetails['Transport']=='Airlines') {echo 'selected="selected"';}?>>Airlines</option>
@@ -184,7 +194,7 @@
 								?>
 								</option>							
 							</select>
-							<label for="Time">Time</label>
+							<label for="time">Time</label>
 							<input type="text" class="form-control" id="time" name="time" value="<?php echo substr($flightdetails['Mla_tstctr_dep'],11,5); ?>">
 
 						</div>
@@ -325,10 +335,11 @@
 		 				<center><h4 id="vat"><?php echo number_format($flightdetails['VAT'],2); ?></h4></center>
 		 			<label for="totalwvat">Total with VAT</label>
 		 				<center><h4 id="totalwvat"><?php echo number_format($flightdetails['Total_w_Vat'],2); ?></h4></center>
-		 			
+		 			<div id="hi"></div>
 		 		</div>
 		 		<hr />
 		 		<center>
+		 		</form>
 				<input type = "submit"; name = "submit"; value = "SAVE" class="btn btn-primary">
 		 		</center>
 		 		
@@ -339,3 +350,65 @@
 </div>
 </body>
 </html>
+
+
+<?php
+
+$bool = NULL;
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+  
+	$transpo = mysql_real_escape_string($_POST['transpo']);
+	$lines = mysql_real_escape_string($_POST['lines']); 
+	$terminal =mysql_real_escape_string($_POST['terminal']); 
+	$date = mysql_real_escape_string($_POST['date']);	
+	$time = mysql_real_escape_string($_POST['time']); 
+	$destination = mysql_real_escape_string($_POST['destination']); 
+	$connectingtrip = mysql_real_escape_string($_POST['connectingtrip']); 
+	$flightno = mysql_real_escape_string($_POST['flightno']); 
+	$onewayfare = mysql_real_escape_string($_POST['onewayfare']); 
+	$expectedarrival1 = mysql_real_escape_string($_POST['expectedarrival1']);
+	$expectedtime1 = mysql_real_escape_string($_POST['expectedtime1']); 
+	$remarks = mysql_real_escape_string($_POST['remarks']); 
+	$date2 = mysql_real_escape_string($_POST['date2']);
+	$time2 = mysql_real_escape_string($_POST['time2']); 
+	$destination2 = mysql_real_escape_string($_POST['destination2']);
+	$connectingtrip2 = mysql_real_escape_string($_POST['connectingtrip2']); 
+	$flightno2 = mysql_real_escape_string($_POST['flightno2']);
+	$onewayfare2 = mysql_real_escape_string($_POST['onewayfare2']); 
+	$expectedarrival2 = mysql_real_escape_string($_POST['expectedarrival2']);
+	$expectedtime2 = mysql_real_escape_string($_POST['expectedtime2']);
+	$remarks2 = mysql_real_escape_string($_POST['remarks2']); 
+	$numofpersons = mysql_real_escape_string($_POST['numofpersons']);
+	$avservicefee = mysql_real_escape_string($_POST['avservicefee']);
+	$insurance = mysql_real_escape_string($_POST['insurance']);
+	$terminalfee = mysql_real_escape_string($_POST['terminalfee']); 
+	$totalwovat = $numofpersons*($onewayfare2+$onewayfare+$avservicefee+$insurance);
+	$vat = 0.12*$totalwovat;
+	echo '<br>'.$vat;
+	$totalwvat = $totalwovat+$vat;
+	echo '<br>'.$totalwvat;
+	$tcc= $flightdetails['tctrcode'];
+	echo $tcc;
+
+
+  $bool = true;
+
+  mysql_connect("localhost", "root", "") or die(mysql_error()); //connect to server
+  mysql_select_db("upcatdb") or die("Cannot connect to database"); //connect to database
+
+}
+if($bool){
+
+  $update = mysql_query("UPDATE `flight_sched` SET 
+`Transport` = '$transpo', `ALBCO`='$lines', `NAIA_terminal`='$terminal',`Mla_tstctr_date`='$date',`Mla_tstctr_dep`='$time',
+`Mla_tstctr_destination`='$destination',`Mla_tstctr_Con_trip`='$connectingtrip',`Mla_tstctr_FlightNo`='$flightno',`Mla_tstctr_1wayfare`='$onewayfare',
+`Mla_tstctr_EDA`='$expectedarrival1',`Mla_tstctr_ETA`='$expectedtime1',`Mla_Remarks`='$remarks',`TstCtr_Mla_date`='$date2',
+`TstCtr_Mla_dep`='$time2',`Tstctr_Mla_Destination`='$destination2',`Tstctr_Mla_Con_trip`='$connectingtrip2',`Tstctr_Mla_FlightNo`='$flightno2',
+`Tstctr_Mla_1wayfare`='$onewayfare2',`Tstctr_Mla_EDA`='$expectedarrival2',`Tstctr_Mla_ETA`='$expectedtime2',`Tctr_Remarks`='$remarks2',`N_persons`='$numofpersons',
+`ASF`='$avservicefee',`INS`='$insurance',`DPSC`='$terminalfee',`Total_No_Vat`='$totalwovat',`VAT`='$vat',`Total_w_Vat`='$totalwvat' WHERE `tctrcode`='$tcc'");
+  // Print '<script>alert("Successfully Registered!");</script>'; // Prompts the user
+  echo("<script>location.href = 'viewitinerary.php?id=".$tcc."';</script>");
+  if (!$update) echo mysql_error();
+}
+?>
