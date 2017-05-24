@@ -57,6 +57,7 @@ $grid = new EditableGrid();
 $grid->addColumn('ID1', 'ID', 'integer', NULL, false); 
 $grid->addColumn('BANK', 'Bank', 'string');
 $grid->addColumn('Bank_desc', 'Description', 'string');
+$grid->addColumn('action', 'Action', 'html', NULL, false, 'id'); 
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : '`banks`';
                                                                        
