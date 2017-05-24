@@ -56,6 +56,7 @@ $grid = new EditableGrid();
 */
 $grid->addColumn('ID', 'ID', 'integer', NULL, false); 
 $grid->addColumn('dESC', 'Description', 'string');
+$grid->addColumn('action', 'Action', 'html', NULL, false, 'id'); 
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : '`FAR`';
                                                                        
