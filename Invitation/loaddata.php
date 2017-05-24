@@ -66,9 +66,6 @@ $grid->addColumn('invite', 'Invitation', 'boolean');
 $grid->addColumn('firsttimer', 'First time', 'boolean');
 
 
- 
-$grid->addColumn('action', 'Action', 'html', NULL, false, 'id');  
-
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : 'Invites';
                                                                        
 $result = $mysqli->query('SELECT * FROM '.$mydb_tablename );
