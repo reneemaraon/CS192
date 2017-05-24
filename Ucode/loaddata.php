@@ -65,6 +65,7 @@ $grid->addColumn('ADDR1', 'ADDR1', 'string');
 $grid->addColumn('ADDR2', 'ADDR2', 'string');
 $grid->addColumn('ADDR3', 'ADDR3', 'string');
 $grid->addColumn('thru', 'thru', 'string');
+$grid->addColumn('action', 'Action', 'html', NULL, false, 'id'); 
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : '`UCODE T`';
                                                                        

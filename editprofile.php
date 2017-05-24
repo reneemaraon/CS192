@@ -250,8 +250,8 @@
 				</div>				
 
 				<div class="form-group">
-					<label for="facultyadminresearch">Faculty/Admin/Research</label>
-					<input type="text" class="form-control" id="facultyadminresearch" name="facultyadminresearch" value="<?php echo $save['FAR']; ?>">
+					<label for="facultyadminresarch">Faculty/Admin/Research</label>
+					<input type="text" class="form-control" id="facultyadminresarch" name="facultyadminresarch" value="<?php echo $save['FAR']; ?>">
 				</div>				
 
 				<div class="form-group">
@@ -294,10 +294,7 @@
 					<label for="tinno">Tin No.</label>
 					<input type="text" class="form-control" id="tinno" name="tinno" value="<?php echo $save['TIN NO']; ?>">
 				</div>				
-				<div class="form-group">
-					<label for="bank">Bank</label>
-					<input type="text" class="form-control" id="bank" name="bank" value="<?php echo $save['BANK']; ?>">
-				</div>			
+
 				<div class="form-group">
 					<label for="atmno">ATM No.</label>
 					<input type="text" class="form-control" id="atmno" name="atmno" value="<?php echo $save['ATM NO']; ?>">
@@ -310,10 +307,10 @@
 				<h5>1.</h5>
 				<div class="form-group">
 					<div class="checkbox">
-					  	<label><input type="checkbox" name="allergicrhinitis" id="allergicrhinitis" <?php if ($save['allergicRhin']!=NULL && $save['allergicRhin']!=0) echo "checked";?>>Allergic Rhinitis</label>
+					  	<label><input type="checkbox" name="allergicrhinitis" value=1 <?php if ($save['allergicRhin']!=NULL && $save['allergicRhin']!=0) echo "checked";?>>Allergic Rhinitis</label>
 					</div>
 					<div class="checkbox">
-					  	<label class="inline"><input type="checkbox" name="allergies" id="allergies" <?php if ($save['Allergies']!=NULL && $save['Allergies']!=0) echo "checked";?>>Allergies</label>
+					  	<label class="inline"><input type="checkbox" name="allergies" <?php if ($save['Allergies']!=NULL && $save['Allergies']!=0) echo "checked";?>>Allergies</label>
 						<input class="inline" type="text" id="allergiesspecs" name="allergiesspecs">
 					</div>
 				</div>				
@@ -322,10 +319,10 @@
 				<h5>2.</h5>
 				<div class="form-group">
 					<div class="checkbox">
-					  	<label><input type="checkbox" name="asthma" id="asthma" <?php if ($save['asthma']!=NULL && $save['asthma']!=0) echo "checked";?>>Asthma</label>
+					  	<label><input type="checkbox" name="asthma" <?php if ($save['asthma']!=NULL && $save['asthma']!=0) echo "checked";?>>Asthma</label>
 					</div>
 					<div class="checkbox">
-					  	<label><input type="checkbox" name="tuberculosis" id="tuberculosis" <?php if ($save['tb']!=NULL && $save['tb']!=0) echo "checked";?>>Tuberculosis</label>
+					  	<label><input type="checkbox" name="tuberculosis" <?php if ($save['tb']!=NULL && $save['tb']!=0) echo "checked";?>>Tuberculosis</label>
 					</div>
 					<div class="checkbox">
 					  	<label><input type="checkbox" name="primarycomplex" <?php if ($save['pc']!=NULL && $save['pc']!=0) echo "checked";?>>Primary Complex</label>
@@ -422,6 +419,7 @@ $bool = NULL;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   
   $image = mysql_real_escape_string($_POST['image']);  
+  $IDno = mysql_real_escape_string($_POST['IDno']);
   $upcatPreAss = mysql_real_escape_string($_POST['upcatPreAss']);
   $nametag = mysql_real_escape_string($_POST['nametag']);
   $lastName = mysql_real_escape_string($_POST['lastName']);
@@ -472,7 +470,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $diabetes = mysql_real_escape_string($_POST['diabetes']);
   $renalfailure = mysql_real_escape_string($_POST['renalfailure']);
   $dysthemia = mysql_real_escape_string($_POST['dysthemia']);
-  $vertigo = mysql_real_escape_string($_POST['vertigo']);
   $bipolardisorder = mysql_real_escape_string($_POST['bipolardisorder']);
   $phobias = mysql_real_escape_string($_POST['phobias']);
   $height = mysql_real_escape_string($_POST['height']);
@@ -489,29 +486,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   mysql_connect("localhost", "root", "") or die(mysql_error()); //connect to server
   mysql_select_db("upcatdb") or die("Cannot connect to database"); //connect to database
   $query = mysql_query("Select * from user");
-if($bool){
-  $insert = mysql_query("UPDATE `DIRINFO` SET
-  	`NAME`='$name', `STATUS`='$status', `LASTNAME`='$lastName', 
-  	`FIRSTNAME`='$firstName', `MIDDLENAME`='$middleName', `MIDDLEINIT`='$middleName[0]', 
-  	`NAMETAG`='$nametag', `EXTNAME`='$suffix', `SEX`='$sex', `BIRTHDATE`='$bday', `TEL1`='$tel', 
-  	`CELFONE`='$mobileno', `EMAIL`='$emailadd', `HOMEADDR`='$address', `EDUC1`='$educ1', `EDUCYR1`='$year1', 
-  	`SCHOOL1`='$school1', `EDUC2`='$educ2', `EDUCYR2`='$year2', `SCHOOL2`='$school2', `EDUC3`='$educ3', `EDUCYR3`='$year3', 
-  	`SCHOOL3`='$school3', `POSITION`='$facultyrank', `SG`='$salarygrade', `TENURE`='$Tenure', `EmployeeNo`='$employeeno', 
-  	`UNITID`='$unitid', `TEL2`='$telnoofc', `TIN NO`='$tinno', `ATM NO`='$atmno', `BANK`='$bank', 
-  	`memPropertyPhotoLink`='$image', `allergicRhin`='$allergicrhinitis',`Allergies`='$allergies',`asthma`='$asthma',
-  	`tb`='$tuberculosis',`pc`='$primarycomplex', `urti`='$urti' , `hypertension`='$hypertension' ,
-  	`coronaryProb`='$coronaryproblems',`migranes`='$migraines',`vertigo`='$vertigo',`diabetes`='$diabetes',
-  	`renalfailure`='$renalfailure',`dysthemia`='$dysthemia',`bipolar`='$bipolardisorder' WHERE ID='$pid'");
-
-  if (!$insert) echo mysql_error();
-  else{
-
-	header('Location: home.php');
-	}
 
 }
 //ID NAME STATUS LASTNAME FIRSTNAME MIDDLENAME MIDDLEINIT NAMETAG EXTNAME SEX BIRTHDAY TEL1 TEL2 CELFONE EMAIL 
 //HOMEADDR EDUC1 EDUCYR1 SCHOOL1 EDUC1TAG EmployeeNo allergicRhin Allergies allergy_spec asthma tb pc urti hypertension
 //coronaryProb migranes vertigo diabetes renalfailure jaundice dysthemia bipolar phobias phobia_spec hgt wgt bp med_others med_treatment ATM NO TIN NO BANK_ID 
+if($bool){
+  $insert = mysql_query("UPDATE `DIRINFO` SET
+  	`NAME`='$name', `STATUS`='$status', `LASTNAME`='$lastName', 
+  	`FIRSTNAME`='$firstName', `MIDDLENAME`='$middleName', `MIDDLEINIT`='$middleName[0]', 
+  	`NAMETAG`='$nametag', `EXTNAME`='$suffix', `SEX`='$sex', `BIRTHDATE`='$bday', `TEL1`='$tel', 
+  	`CELFONE`='$mobileno', `EMAIL`='$email', `HOMEADDR`='$address', `EDUC1`='$educ1', `EDUCYR1`='$year1', 
+  	`SCHOOL1`='$school1', `EDUC2`='$educ2', `EDUCYR2`='$year2', `SCHOOL2`='$school2', `EDUC3`='$educ3', `EDUCYR3`='$year3', 
+  	`SCHOOL3`='$school3', `POSITION`='$facultyrank', `SG`='$salarygrade', `TENURE`='$Tenure', `EmployeeNo`='$employeeno', 
+  	`UNITID`='$unitid', `TEL2`='$telnoofc', `TIN NO`='$tinno', `ATM NO`='$atmno', `BANK`='$bank', 
+  	`memPropertyPhotoLink`='$image', `allergicRhin`='$allergicrhinitis',`Allergies`='$Allergies',`asthma`='$asthma',
+  	`tb`='$tuberculosis',`pc`='$primarycomplex', `urti`='$urti' , `hypertension`='$hypertension' ,
+  	`coronaryProb`='$coronaryproblems',`migranes`='$migraines',`vertigo`='$vertigo',`diabetes`='$diabetes',
+  	`renalfailure`='$renalfailure',`dysthemia`='$dysthemia',`bipolar`='$bipolardisorder' WHERE ID='$pid'");
+  Print '<script>alert("Successfully Edited!");</script>'; // Prompts the user
+
+  if (!$insert) echo mysql_error();
 }
 ?>

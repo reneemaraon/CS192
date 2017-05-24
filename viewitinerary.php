@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/bootstrap.min.js"></script>
+<<<<<<< HEAD
 	<script src="js/jquery.min.js"></script>
 	<script>
 	function getLines(val) {
@@ -42,6 +43,8 @@
 			});
 	}
 </script>
+=======
+>>>>>>> origin/master
 </head>
 <body>
   	  <?php
@@ -86,22 +89,21 @@
 			$query = mysql_query("SELECT date FROM `upcat_schedule` WHERE id=2");
 			$day2 = mysql_fetch_array($query);
 
-			$query = mysql_query("SELECT * FROM `flight_sched` WHERE tctrcode=".$_GET["id"]);
-			$row = mysql_fetch_array($query);
-			$flightdetails = $row;
+
 			$date1 = date_create($day1["date"]);
 			$date2 = date_create($day2["date"]);
 			echo "<h4>";
 			echo date_format($date1, 'F d');
 			echo " - ";
 			echo date_format($date2, 'd, Y');
+			// echo date_format(date_sub($date,date_interval_create_from_date_string('2 days')),'F d, Y');
 			echo "</h4>";
 			echo "</center>";
-
 			echo '<div class="container">';
 		 ?>
 		 	<br>
 		 	<h3><b>Test Center:</b> <?php echo $save['tcc']; echo " - "; echo $save['TEST CENTER']?> </h3>
+<<<<<<< HEAD
 		 	<br>
 		 	<form METHOD="POST">
 			<div class="form-inline">
@@ -146,176 +148,39 @@
 
 			</div>
 			<br>
+=======
+			
+>>>>>>> origin/master
 		 	<div class="col-sm-8">
-		 			<div class="row">
-		 			<center><h4 class="specialcolor"><b>Departure from Manila</b></h4></center>
-		 			<hr / >
-		 			<div class="col-sm-3">
+		 			<center><h4 class="specialcolor"><b>Departure from Manila</b></h4>
+		 			<div class="col-sm-5">
 						<div class="form-group">
-							<label for="date">Date</label>
-							<select class="form-control" id="date" name="date">
-								<option>Select Date</option>
-								<?php 
-								echo '<option';
-								$date1 = date_create($day1["date"]);	
-								date_sub($date1,date_interval_create_from_date_string('4 days'));
-								if ($flightdetails['Mla_tstctr_date']==$date1){
-									echo ' selected="selected"';
-								} 
-								echo '>'.date_format($date1,'F d, Y');;
-								echo '</option>';
-
-								echo '<option';
-								$date1 = date_create($day1["date"]);	
-								date_sub($date1,date_interval_create_from_date_string('3 days'));
-								if ($flightdetails['Mla_tstctr_date']==$date1){
-									echo ' selected="selected"';
-								} 
-								echo '>'.date_format($date1,'F d, Y');;
-								echo '</option>';
-
-								echo '<option';
-								$date1 = date_create($day1["date"]);	
-								date_sub($date1,date_interval_create_from_date_string('2 days'));
-								if ($flightdetails['Mla_tstctr_date']==$date1){
-									echo ' selected="selected"';
-								} 
-								echo '>'.date_format($date1,'F d, Y');;
-								echo '</option>';
-
-								echo '<option';
-								$date1 = date_create($day1["date"]);	
-								date_sub($date1,date_interval_create_from_date_string('1 days'));
-								if ($flightdetails['Mla_tstctr_date']==$date1){
-									echo ' selected="selected"';
-								} 
-								echo '>'.date_format($date1,'F d, Y');;
-								echo '</option>';																
-								?>
-								</option>							
+							<label for="nametag">Name Tag</label>
+							<select class="form-control" id="nametag" name="nametag">
+								<option>Dr.</option>
 							</select>
+<<<<<<< HEAD
 							<label for="time">Time</label>
 							<input type="text" class="form-control" id="time" name="time" value="<?php echo substr($flightdetails['Mla_tstctr_dep'],11,5); ?>">
 
 						</div>
+=======
+				</div>
+>>>>>>> origin/master
 		 			</div>
-		 			<div class="col-sm-8">
-					<label for="destination">Destination</label>
-					<input type="text" class="form-control" id="destination" name="destination" value="<?php echo $flightdetails['Mla_tstctr_destination']; ?>">
-					<label for="connectingtrip">Connecting Trip</label>
-					<input type="text" class="form-control" id="connectingtrip" name="connectingtrip" value="<?php echo $flightdetails['Mla_tstctr_Con_trip']; ?>">
-						<div class="row">
-						<div class="col-sm-6">
-							<label for="flightno">Flight No.</label>
-							<input type="text" class="form-control" id="flightno" name="flightno" value="<?php echo $flightdetails['Mla_tstctr_FlightNo']; ?>">
-						</div>
-						<div class="col-sm-6">
-							<label for="onewayfare">One Way Fare</label>
-							<input type="text" class="form-control" id="onewayfare" name="onewayfare" value="<?php echo $flightdetails['Mla_tstctr_1wayfare']; ?>">
-						</div>
-						</div>
-						<div class="row">
-						<div class="col-sm-6">
-							<label for="expectedarrival1">Expected Date of Arrival</label>
-							<input type="text" class="form-control" id="expectedarrival1" name="expectedarrival1" value="<?php echo date_format(date_create($flightdetails['Mla_tstctr_EDA']),'F d Y'); ?>">
-						</div>
-						<div class="col-sm-6">
-							<label for="expectedtime1">Time</label>
-							<input type="text" class="form-control" id="expectedtime1" name="expectedtime1" value="<?php echo substr($flightdetails['Mla_tstctr_ETA'],11,5); ?>">
-						</div>
-
-						</div>
-					<label for="remarks1">Remarks</label>
-					<input type="text" class="form-control" id="remarks" name="remarks" value="<?php echo $flightdetails['Mla_Remarks']; ?>">						
-					</div>
 		 	</div>
-		 	<br> <br>
-		 	<div class="row">
-		 			<center><h4 class="specialcolor"><b>Departure from Testing Center</b></h4></center>
-		 			<hr / >
-		 			<div class="col-sm-3">
-						<div class="form-group">
-							<label for="date2">Date</label>
-							<select class="form-control" id="date2" name="date2">
-								<option>Select Date</option>
-								<?php 
-								echo '<option';
-								$date1 = date_create($day2["date"]);	
-								date_add($date1,date_interval_create_from_date_string('1 days'));
-								if ($flightdetails['TstCtr_Mla_date']==$date1){
-									echo ' selected="selected"';
-								} 
-								echo '>'.date_format($date1,'F d, Y');;
-								echo '</option>';
-								
-								echo '<option';
-								$date1 = date_create($day2["date"]);	
-								date_add($date1,date_interval_create_from_date_string('2 days'));
-								if ($flightdetails['TstCtr_Mla_date']==$date1){
-									echo ' selected="selected"';
-								} 
-								echo '>'.date_format($date1,'F d, Y');;
-								echo '</option>';
 
-								echo '<option';
-								$date1 = date_create($day2["date"]);	
-								date_add($date1,date_interval_create_from_date_string('3 days'));
-								if ($flightdetails['TstCtr_Mla_date']==$date1){
-									echo ' selected="selected"';
-								} 
-								echo '>'.date_format($date1,'F d, Y');;
-								echo '</option>';
-
-								echo '<option';
-								$date1 = date_create($day2["date"]);	
-								date_add($date1,date_interval_create_from_date_string('4 days'));
-								if ($flightdetails['TstCtr_Mla_date']==$date1){
-									echo ' selected="selected"';
-								} 
-								echo '>'.date_format($date1,'F d, Y');;
-								echo '</option>';
-								?>
-								
-		
-							</select>
-							<label for="time2">Time</label>
-							<input type="text" class="form-control" id="time2" name="time2" value="<?php echo substr($flightdetails['TstCtr_Mla_dep'],11,5); ?>">
-
-						</div>
-		 			</div>
-		 			<div class="col-sm-8">
-					<label for="destination2">Destination</label>
-					<input type="text" class="form-control" id="destination2" name="destination2" value="<?php echo $flightdetails['TstCtr_Mla_Destination']; ?>">
-					<label for="connectingtrip2">Connecting Trip</label>
-					<input type="text" class="form-control" id="connectingtrip2" name="connectingtrip2" value="<?php echo $flightdetails['TstCtr_Mla_Con_trip']; ?>">
-						<div class="row">
-						<div class="col-sm-6">
-							<label for="flightno2">Flight No.</label>
-							<input type="text" class="form-control" id="flightno2" name="flightno2" value="<?php echo $flightdetails['TstCtr_Mla_FlightNo']; ?>">
-						</div>
-						<div class="col-sm-6">
-							<label for="onewayfare2">One Way Fare</label>
-							<input type="text" class="form-control" id="onewayfare2" name="onewayfare2" value="<?php echo $flightdetails['TstCtr_Mla_1wayfare']; ?>">
-						</div>
-						</div>
-						<div class="row">
-						<div class="col-sm-6">
-							<label for="expectedarrival2">Expected Date of Arrival</label>
-							<input type="text" class="form-control" id="expectedarrival2" name="expectedarrival2" value="<?php echo date_format(date_create($flightdetails['tstctr_Mla_EDA']),'F d Y'); ?>">
-						</div>
-						<div class="col-sm-6">
-							<label for="expectedtime1">Time</label>
-							<input type="text" class="form-control" id="expectedtime2" name="expectedtime2" value="<?php echo substr($flightdetails['TstCtr_Mla_ETA'],11,5); ?>">
-						</div>
-
-						</div>
-					<label for="remarks2">Remarks</label>
-					<input type="text" class="form-control" id="remarks2" name="remarks2" value="<?php echo $flightdetails['Tctr_Remarks']; ?>">						
-					<br><br>	 		
-					</div>	
+		 	
+		 	<div class="col-sm-6">
 		 	</div>
+
+
+
+
+
 		 	<!-- container -->
 			</div>
+<<<<<<< HEAD
 
 		 	<div class="col-sm-4">
 		 		<br><br><br>
@@ -346,6 +211,8 @@
 		 	</div>
 
 
+=======
+>>>>>>> origin/master
 	</div>
 </div>
 </body>

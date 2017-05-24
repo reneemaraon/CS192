@@ -70,7 +70,7 @@ $grid->addColumn('Min_P', 'Min_P', 'string');
 $grid->addColumn('Max_P', 'Min_P', 'string');
 $grid->addColumn('Total_N', 'Total_N', 'integer');
 $grid->addColumn('tag', 'tag', 'string');
-
+$grid->addColumn('action', 'Action', 'html', NULL, false, 'id'); 
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : 'TestCenters';
                                                                        

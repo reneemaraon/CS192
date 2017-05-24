@@ -41,8 +41,8 @@
 						<li><a href="addrecord.php">Add Record</a></li>
 						<li><a href="Invitation">Invitation</a></li>
 						<li><a href="Response">Response</a></li>
-						<li><a href="Assignment">Assignment (Regional)</a></li>
-						<li><a href="Assignment_Dil" class="active">Assignment (Diliman)</a></li>
+						<li><a href="Assignment" class="active">Assignment (Regional)</a></li>
+						<li><a href="Assignment_Dil">Assignment (Diliman)</a></li>
 						<li><a href="Attendance">UPCAT Attendance</a></li>
 
 				</ul>
@@ -130,7 +130,7 @@
 										<!-- <th style="text-align:center">ASSG</th> -->
 										<th style="text-align:center">CODE</th>
 										<th style="text-align:center">Hall</th>
-
+										<th style="text-align:center">Room</th>
 										<th style="text-align:center">Test Center</th>
 									</tr>
 								<tbody>
@@ -149,7 +149,7 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `Invites` WHERE response in (2) AND invite in (1,-1)";
+								$sql = "SELECT * FROM `Invites` WHERE response in (0,1,2) AND invite in (1,-1)";
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
@@ -162,7 +162,7 @@
 												// echo '<td align="center">' .$row["ASSG"] . '</td>';
 												echo '<td align="center">' .$row["Assg_TCTRC"] . '</td>';
 												echo '<td align="center">' .$row["Assg_TestingHall"] . '</td>';
-
+												echo '<td align="center">' .$row["Assg_TestingRoom"] . '</td>';
 												echo '<td align="center"><a href="assign.php?id='.$row["id"].'">Assign</a></td>';
 												// '<div class="dropdown">
 												//   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile

@@ -229,8 +229,8 @@
 				</div>				
 
 				<div class="form-group">
-					<label for="facultyadminreesarch">Faculty/Admin/Research</label>
-					<input type="text" class="form-control" id="facultyadminresearch" name="facultyadminresearch">
+					<label for="facultyadminresarch">Faculty/Admin/Research</label>
+					<input type="text" class="form-control" id="facultyadminresarch" name="facultyadminresarch">
 				</div>				
 
 				<div class="form-group">
@@ -474,7 +474,7 @@ if($bool){
   $insert = mysql_query("INSERT INTO `DIRINFO` (`id`, `NAME`, `STATUS`, `LASTNAME`, `FIRSTNAME`, `MIDDLENAME`, `MIDDLEINIT`, `NAMETAG`, `EXTNAME`, `SEX`, `BIRTHDATE`, `TEL1`, `CELFONE`, `EMAIL`, `HOMEADDR`, `EDUC1`, `EDUCYR1`, `SCHOOL1`, `EDUC2`, `EDUCYR2`, `SCHOOL2`, `EDUC3`, `EDUCYR3`, `SCHOOL3`, `POSITION`, `SG`, `TENURE`, `EmployeeNo`, `UNIT`, `UNITID`, `TEL2`, `TIN NO`, `ATM NO`, `BANK`, `memPropertyPhotoLink`, `allergicRhin`,`Allergies`,`asthma`,`tb`,`pc`,`urti`,`hypertension`,`coronaryProb`,`migranes`,`vertigo`,`diabetes`,`renalfailure`,`dysthemia`,`bipolar`) 
   									VALUES ('$IDno', '$name', '$status', '$lastName', '$firstName', '$middleName', '$middleName[0]', '$nametag', '$suffix', '$sex', '$bday', '$tel', '$mobileno','$emailadd', '$address', '$educ1', '$year1' , '$school1','$educ2', '$year2' , '$school2', '$educ3', '$year3' , '$school3', '$facultyrank', '$salarygrade', '$Tenure', '$employeeno','$unitcode', '$unitid', '$telnoofc', '$tinno', '$atmno', '$bank', '$image','$allergicrhinitis','$allergies','$asthma','$tuberculosis','$primarycomplex','$urti', '$hypertension','$coronaryproblems','$migraines','$vertigo','$diabetes','$renalfailure','$dysthemia','$bipolardisorder');");
   
-  // Print '<script>alert("Successfully Registered!");</script>'; // Prompts the user
+  Print '<script>alert("Successfully Registered!");</script>'; // Prompts the user
 
   if (!$insert) echo mysql_error();
 }
