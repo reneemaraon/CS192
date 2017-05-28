@@ -8,12 +8,20 @@
 	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-  	  <?php
+      <?php
     session_start();
-    if($_SESSION['user']){
+    if($_SESSION['user'] && $_SESSION['rights'] == 1){
+    }
+    else if($_SESSION['user'] && $_SESSION['rights'] == 3)
+    {
+
+    }
+    else if($_SESSION['user'] && $_SESSION['rights'] == 4)
+    {
+
     }
     else{
-      header('location: login.php');
+      header('location: ../error.php');
     }
     $user = $_SESSION['user'];
   ?>
@@ -39,10 +47,10 @@
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
 						<li><a href="home.php">View List of Personnel</a></li>
 						<li><a href="addrecord.php" class="active">Add Record</a></li>
-						<li><a href="Invitation">Invitation</a></li>
+						<li><a href="invitation.php">Invitation</a></li>
 						<li><a href="Response">Response</a></li>
-						<li><a href="Assignment">Assignment (Regional)</a></li>
-						<li><a href="Assignment_Dil">Assignment (Diliman)</a></li>
+						<li><a href="attendanceregional.php">Assignment (Regional)</a></li>
+						<li><a href="attendancediliman.php">Assignment (Diliman)</a></li>
 						<li><a href="Attendance">UPCAT Attendance</a></li>
 
 				</ul>

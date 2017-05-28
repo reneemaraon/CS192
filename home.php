@@ -31,19 +31,21 @@
 			<li class="active"><a href="home.php">Home</a></li>
 			<li><a href="profile.php">Profile</a></li>
 			<li><a href="Rates">Records</a></li>
+			<li><a href="itinerary.php">Itinerary</a></li>
 			<li><a href="logout.php">Logout</a></li>
 		</ul>
 	</div>
 </nav>
 
 <!-- baba -->
+
 	<div class="container-fluid">
 		<div class="row" >
 			<div class="col-sm-2">
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
 						<li><a href="home.php" class="active">View List of Personnel</a></li>
 						<li><a href="addrecord.php">Add Record</a></li>
-						<li><a href="Invitation">Invitation</a></li>
+						<li><a href="invitation.php">Invitation</a></li>
 						<li><a href="Response">Response</a></li>
 						<li><a href="attendanceregional.php">Assignment (Regional)</a></li>
 						<li><a href="attendancediliman.php">Assignment (Diliman)</a></li>
@@ -74,6 +76,7 @@
 
 								// Create connection
 								$conn = new mysqli($servername, $username, $password, $dbname);
+
 								// Check connection
 								if ($conn->connect_error) {
 										die("Connection failed: " . $conn->connect_error);
@@ -155,12 +158,20 @@
 								if ($conn->connect_error) {
 										die("Connection failed: " . $conn->connect_error);
 								} 
-
-								$sql = "SELECT * FROM `DIRINFO` ORDER BY NYR DESC LIMIT 500";
+								if (Empty($_GET["page"]))
+								{
+									$offset = 0;
+								}
+								else
+								{
+									$offset = 100*$_GET["page"];
+								}
+								$sql = "SELECT * FROM `DIRINFO` ORDER BY NYR DESC LIMIT $offset,100";
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
 										// output data of each row
+										
 										while($row = $result->fetch_assoc()) {
 
 												echo '<tr>';

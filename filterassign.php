@@ -133,7 +133,7 @@
 												echo '<td align="center">' .$row["Bldg_desc"] . '</td>';
 												echo '<td align="center">' .$row["Room"] . '</td>';
 												echo '<td align="center">' .$row["Cap"] . '</td>';
-											echo '<td align="center"><a href="assignroom.php?rid='.$row["ID"].'&id='.$_SESSION["assignp"].'">Assign</a></td>';
+											echo '<td align="center"><a href="assignroom.php?rid='.$row["id"].'&id='.$_SESSION["assignp"].'">Assign</a></td>';
 												// '<div class="dropdown">
 												//   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile
 												//   <span class="caret"></span></button>

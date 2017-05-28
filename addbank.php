@@ -27,6 +27,7 @@
 			<li class="active"><a href="home.php">Home</a></li>
 			<li><a href="profile.php">Profile</a></li>
 			<li><a href="Rates">Records</a></li>
+			<li><a href="itinerary.php">Itinerary</a></li>
 			<li><a href="logout.php">Logout</a></li>
 		</ul>
 	</div>
@@ -35,25 +36,18 @@
 <!-- baba -->
 	<div class="container-fluid">
 		<div class="row" >
-			<div class="col-sm-2">
-					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
-						<li><a href="home.php">View List of Personnel</a></li>
-						<li><a href="addrecord.php" class="active">Add Record</a></li>
-						<li><a href="Invitation">Invitation</a></li>
-						<li><a href="Response">Response</a></li>
-						<li><a href="Assignment">Assignment (Regional)</a></li>
-						<li><a href="Assignment_Dil">Assignment (Diliman)</a></li>
-						<li><a href="Attendance">UPCAT Attendance</a></li>
-
-				</ul>
-			</div>
+		<div class="col-sm-2">
+			<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
+				<li><a href="./banks" class="active">Go Back</a></li>
+			</ul>
+		</div>
 			<div class="col-sm-5">
 					<!-- CONTENT -->
 				<h2>Create Record</h2>
 
 
 				<form METHOD="POST">
-				<h3>Personal Details</h3>
+
 				
 				<!-- <div class="form-group">
 					<label for="IDno">ID No</label>
@@ -71,21 +65,21 @@
 
 				<div class="form-group">
 					<label for="upcatPreAss">ID</label>
-					<input type="text" class="form-control" id="id" name="id">
+					<input type="text" class="form-control" id="ID1" name="ID1">
 				</div>
 
 				<div class="form-group">
-					<label for="lastName">Designation</label>
-					<input type="text" class="form-control" id="designation" name="designation">
+					<label for="lastName">Bank_id</label>
+					<input type="text" class="form-control" id="Bank_id" name="Bank_id">
 				</div>
 
 				<div class="form-group">
-					<label for="firstName">Des Code</label>
-					<input type="text" class="form-control" id="des_code" name="des_code">
+					<label for="firstName">BANK</label>
+					<input type="text" class="form-control" id="BANK" name="BANK">
 				</div>
 				<div class="form-group">
-					<label for="middleName">Rate</label>
-					<input type="text" class="form-control" id="rate" name="rate">
+					<label for="middleName">Bank_desc</label>
+					<input type="text" class="form-control" id="Bank_desc" name="Bank_desc">
 				</div>
 
 
@@ -108,10 +102,10 @@ $bool = NULL;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   
-  $id = mysql_real_escape_string($_POST['id']);  
-  $designation = mysql_real_escape_string($_POST['designation']);
-  $des_code = mysql_real_escape_string($_POST['des_code']);
-  $rate = mysql_real_escape_string($_POST['rate']);
+  $ID1 = mysql_real_escape_string($_POST['ID1']);  
+  $Bank_id = mysql_real_escape_string($_POST['Bank_id']);
+  $BANK = mysql_real_escape_string($_POST['BANK']);
+  $Bank_desc = mysql_real_escape_string($_POST['Bank_desc']);
 
   $bool = true;
 
@@ -122,8 +116,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 if($bool){
-  $insert = mysql_query("INSERT INTO `Rates` (`id`, `Designation`, `Des_Code`, `Rate`) 
-  									VALUES ('$id', '$designation', '$des_code', '$rate');");
+  $insert = mysql_query("INSERT INTO `Banks` (`ID1`, `Bank_id`, `BANK`, `Bank_desc`)
+  									VALUES ('$ID1', '$Bank_id', '$BANK', '$Bank_desc');");
   
   Print '<script>alert("Successfully Registered!");</script>'; // Prompts the user
 

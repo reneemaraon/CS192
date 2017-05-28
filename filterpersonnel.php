@@ -39,10 +39,10 @@
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
 						<li><a href="home.php" class="active">View List of Personnel</a></li>
 						<li><a href="addrecord.php">Add Record</a></li>
-						<li><a href="Invitation">Invitation</a></li>
+						<li><a href="invitation.php">Invitation</a></li>
 						<li><a href="Response">Response</a></li>
-						<li><a href="Assignment">Assignment (Regional)</a></li>
-						<li><a href="Assignment_Dil">Assignment (Diliman)</a></li>
+						<li><a href="attendanceregional.php">Assignment (Regional)</a></li>
+						<li><a href="attendancediliman.php">Assignment (Diliman)</a></li>
 						<li><a href="Attendance">UPCAT Attendance</a></li>
 
 				</ul>

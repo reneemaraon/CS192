@@ -18,4 +18,4 @@
 								$conn->close();
 
 								?>
-<script type="text/javascript">location.href = 'Invitation';</script>
+<script type="text/javascript">location.href = 'invitation.php';</script>

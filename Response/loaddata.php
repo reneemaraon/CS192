@@ -61,7 +61,7 @@ $grid->addColumn('tblName', 'Name', 'string');
 $grid->addColumn('response', 'response', 'string', ["Yes", "No", "Dil", "Not Available", "No Response"] ,true );
 $grid->addColumn('remarks', 'remarks', 'string');
 $grid->addColumn('preferences', 'preferences', 'string');
-$grid->addColumn('action', 'Action', 'html', NULL, true);  
+
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : 'Invites';
                                                                        

@@ -27,6 +27,7 @@
 			<li class="active"><a href="home.php">Home</a></li>
 			<li><a href="profile.php">Profile</a></li>
 			<li><a href="Rates">Records</a></li>
+			<li><a href="itinerary.php">Itinerary</a></li>
 			<li><a href="logout.php">Logout</a></li>
 		</ul>
 	</div>
@@ -39,17 +40,17 @@
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
 						<li><a href="home.php" >View List of Personnel</a></li>
 						<li><a href="addrecord.php">Add Record</a></li>
-						<li><a href="Invitation">Invitation</a></li>
+						<li><a href="invitation.php">Invitation</a></li>
 						<li><a href="Response">Response</a></li>
-						<li><a href="Assignment">Assignment (Regional)</a></li>
-						<li><a href="Assignment_Dil" class="active">Assignment (Diliman)</a></li>
+						<li><a href="attendanceregional.php">Assignment (Regional)</a></li>
+						<li><a href="attedancediliman.php" class="active">Assignment (Diliman)</a></li>
 						<li><a href="Attendance">UPCAT Attendance</a></li>
 
 				</ul>
 			</div>
 			<div class="col-sm-9">
 						<!-- CONTENT -->
-						<h3> List of UPCAT Personnel </h3>
+						<h3> Assignment </h3>
 						<br>
 						<!-- <form class="form-inline" action="filterpersonnel.php" method="POST">
 							<label for="inlineFormInput">Year  </label>
@@ -130,6 +131,7 @@
 										<!-- <th style="text-align:center">ASSG</th> -->
 										<th style="text-align:center">CODE</th>
 										<th style="text-align:center">Hall</th>
+										<th style="text-align:center">Room</th>
 
 										<th style="text-align:center">Test Center</th>
 									</tr>
@@ -149,7 +151,7 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `Invites` WHERE response in (2) AND invite in (1,-1)";
+								$sql = "SELECT * FROM `Invites` WHERE response in (0,1,2) AND invite in (1,-1) AND ASSG in (1,2,3,4,5,6,7,8,10,11,12,14,15,16)";
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
@@ -162,7 +164,7 @@
 												// echo '<td align="center">' .$row["ASSG"] . '</td>';
 												echo '<td align="center">' .$row["Assg_TCTRC"] . '</td>';
 												echo '<td align="center">' .$row["Assg_TestingHall"] . '</td>';
-
+												echo '<td align="center">' .$row["Assg_TestingRoom"] . '</td>';
 												echo '<td align="center"><a href="assign.php?id='.$row["id"].'">Assign</a></td>';
 												// '<div class="dropdown">
 												//   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile

@@ -41,8 +41,8 @@
 						<li><a href="addrecord.php">Add Record</a></li>
 						<li><a href="Invitation">Invitation</a></li>
 						<li><a href="Response">Response</a></li>
-						<li><a href="Assignment">Assignment (Regional)</a></li>
-						<li><a href="Assignment_Dil"  class="active">Assignment (Diliman)</a></li>
+						<li><a href="Assignment" class="active">Assignment (Regional)</a></li>
+						<li><a href="Assignment_Dil" >Assignment (Diliman)</a></li>
 						<li><a href="Attendance">UPCAT Attendance</a></li>
 
 				</ul>
@@ -97,9 +97,7 @@
 									<tr>
 										<th style="text-align:center">Test Center Code</th>
 										<th style="text-align:center">UCODE</th>
-										<th style="text-align:center">Hall</th>
-										<th style="text-align:center">Room</th>
-										<th style="text-align:center">Capacity</th>
+										<th style="text-align:center">Warning</th>
 										<th style="text-align:center">Assign</th>
 									</tr>
 								<tbody>
@@ -117,8 +115,25 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `testcenters` WHERE tctr_tag='REG'";
+								$sql = "SELECT * FROM TestCenters WHERE tctr_tag='REG'";
+
+
 								$result = $conn->query($sql);
+
+
+
+								$sql2 = "SELECT * FROM `CATDIREC` WHERE ID=$pid";
+								$result2 = $conn->query($sql2);
+								$types = array();
+								while(($row2 =  $result2->fetch_assoc())) {
+								    $types[] = $row2["TCTRCODE"];
+
+								}
+
+								if (in_array(1622,$types))
+								{
+									echo "lation";
+								}
 
 								if ($result->num_rows > 0) {
 										// output data of each row
@@ -127,10 +142,15 @@
 												echo '<tr>';
 												echo '<td align="center">' .$row["TctrCode"] . '</td>';
 												echo '<td align="center">' .$row["BLDG"] . '</td>'; 
-												echo '<td align="center">' .$row["Bldg_desc"] . '</td>';
-												echo '<td align="center">' .$row["Room"] . '</td>';
-												echo '<td align="center">' .$row["Cap"] . '</td>';
-											echo '<td align="center"><a href="assignroom.php?rid='.$row["id"].'&id='.$pid.'">Assign</a></td>';
+												echo '<td align="center">';
+
+												if(in_array($row["TctrCode"],$types))
+												{
+													echo "Warning! (Repeat)";
+												}
+												echo '</td>'; 
+
+											echo '<td align="center"><a href="assignroom2.php?rid='.$row["id"].'&id='.$pid.'">Assign</a></td>';
 												// '<div class="dropdown">
 												//   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile
 												//   <span class="caret"></span></button>

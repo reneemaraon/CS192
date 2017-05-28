@@ -27,6 +27,7 @@
 			<li><a href="home.php">Home</a></li>
 			<li class="active"><a href="profile.php">Profile</a></li>
 			<li><a href="Rates">Records</a></li>
+			<li><a href="itinerary.php">Itinerary</a></li>
 			<li><a href="logout.php">Logout</a></li>
 		</ul>
 	</div>

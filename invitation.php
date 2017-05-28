@@ -7,14 +7,21 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/bootstrap.min.js"></script>
 </head>
-<script type='text/javascript' src='//code.jquery.com/jquery-1.10.1.js'></script>
 <body>
   	  <?php
     session_start();
-    if($_SESSION['user']){
+    if($_SESSION['user'] && $_SESSION['rights'] == 1){
+    }
+    else if($_SESSION['user'] && $_SESSION['rights'] == 2)
+    {
+
+    }
+    else if($_SESSION['user'] && $_SESSION['rights'] == 3)
+    {
+
     }
     else{
-      header('location: login.php');
+      header('location: error.php');
     }
     $user = $_SESSION['user'];
   ?>
@@ -25,9 +32,9 @@
 		<a href="#" class="navbar-left"><img src="pics/logo.png" width="40px" hspace="20px" vspace="5px"></a>
 		<a class="navbar-brand" href="#">UP Office of Admissions</a>
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Records</a></li>
+			<li class="active"><a href="home.php">Home</a></li>
+			<li><a href="profile.php">Profile</a></li>
+			<li><a href="Rates">Records</a></li>
 			<li><a href="logout.php">Logout</a></li>
 		</ul>
 	</div>
@@ -40,25 +47,27 @@
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
 						<li><a href="home.php">View List of Personnel</a></li>
 						<li><a href="addrecord.php">Add Record</a></li>
-						<li><a href="invitation.php" class="active">Invitation</a></li>
-						<li><a href="response.php">Response</a></li>
-						<li><a href="assignment.php">Assignment</a></li>
-						<li><a href="attendance.php">UPCAT Attendance</a></li>
+						<li><a href="Invitation" class="active">Invitation</a></li>
+						<li><a href="Response">Response</a></li>
+						<li><a href="attendanceregional.php">Assignment (Regional)</a></li>
+						<li><a href="attendancediliman.php">Assignment (Diliman)</a></li>
+						<li><a href="Attendance">UPCAT Attendance</a></li>
 
 				</ul>
 			</div>
+			<div class="col-sm-10">
+						
+						
+
+						
+			</div>
 			<div class="col-sm-9">
 						<!-- CONTENT -->
-						<h3> Invitation </h3><br>
 
-						<button id="button1" type="button">Write to File</button>
-						<a href="pdf.php">PDF</a>
-						
+						<h3> Invitation </h3>
 						<br>
-						<br>
-						<br>
-						<form class="form-inline" action="filterinvitation.php" method="POST">
-							<label for="inlineFormInput">Year  </label>
+						<form class="form-inline" action="filterinvite.php" method="POST">
+							<label for="inlineFormInput">UPCAT Year  </label>
 							<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="year" name="year" value="">
 							
 							<label for="inlineFormInputGroup">Name  </label>
@@ -86,7 +95,7 @@
 								if ($result->num_rows > 0) {
 										// output data of each row
 										while($row = $result->fetch_assoc()) {
-											echo "<option>".$row["UCODE"]."</option>";
+											echo "<option>".$row[UCODE]."</option>";
 										}
 								} else {
 										echo "0 results";
@@ -122,27 +131,37 @@
 
 							</select>
 
-							<button type="submit" class="btn btn-primary">Filter</button>
+							<button type="submit" class="btn btn-primary">Search</button>
 							 </form>
-							 <br><br>
-							 <button type="submit" for="toInvite" class="btn btn-success">Save Changes</button>
-
-							 <br><br>
+							 <br>
+							 <br>
+							<!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"> -->
+							<form action="pdf4.php">
+								<input type="submit" value="Generate Invite List"/>
+							</form>
+							<form action="selectall.php">
+								<input type="submit" value="Select All"/>
+							</form>
+							<form action="deselectall.php">
+								<input type="submit" value="Deselect All"/>
+							</form>
 							<table class="table">
 								<thead>
 									<tr>
 										<th style="text-align:center">ID</th>
+										
 										<th style="text-align:center">Name</th>
-										<th style="text-align:center">NYEAR</th>
+										<th style="text-align:center">Num Years</th>
 										<th style="text-align:center">Unit Code</th>
-										<th style="text-align:center">Last UPCAT Year</th>
+										<th style="text-align:center">Last UPCAT year</th>
 										<th style="text-align:center">Test Center Code</th>
-										<th style="text-align:center">Test Center</th>
+										<th style="text-align:center">Testing Center</th>
 										<th style="text-align:center">Assignment</th>
-										<th style="text-align:center">Invitation</th>
-										<th style="text-align:center">First Timer</th>
+										<th style="text-align:center">Birthdays of Children</th>
+										<th style="text-align:center">Invited</th>
+										<th style="text-align:center">First Time</th>
 
-
+										
 									</tr>
 								<tbody>
 
@@ -160,62 +179,93 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `invites` LIMIT 100" ;
+								$sql = "SELECT * FROM `Invites` LIMIT 500";
 								$result = $conn->query($sql);
+
+
 
 								if ($result->num_rows > 0) {
 										// output data of each row
-
-
 										while($row = $result->fetch_assoc()) {
 
+												$myid = $row["id"];
+
 												echo '<tr>';
-												echo '<td align="center">' .$row["ID"] . '</td>'; 
+												echo '<td align="center">' .$row["id"] . '</td>'; 
+												
 												echo '<td align="center">' .$row["tblName"] . '</td>';
 												echo '<td align="center">' .$row["numyears"] . '</td>';
 												echo '<td align="center">' .$row["UCODE"] . '</td>';
 												echo '<td align="center">' .$row["yrservice"] . '</td>';
 												echo '<td align="center">' .$row["TCTRCODE"] . '</td>';
 												echo '<td align="center">' .$row["testcenter"] . '</td>';
-												echo '<td align="center">
-												 <div class="form-group" id ="toInvite">
-												  <select class="form-control" id="assg">';
+												echo '<td align="center"><a href="changeassg.php?id='.$row["id"].'">'.$row["ASSG"] .'</a></td>';
+												echo '<td align="center">';
 
-													echo '<option'; if ($row["ASSG"]=='A'){echo ' selected="selected"';} echo ">A</option>";
-													echo '<option'; if ($row["ASSG"]=='BA'){echo ' selected="selected"';} echo ">BA</option>";
-													echo '<option'; if ($row["ASSG"]=='C'){echo ' selected="selected"';} echo ">C</option>";
-													echo '<option'; if ($row["ASSG"]=='CP'){echo ' selected="selected"';} echo ">CP</option>";
-													echo '<option'; if ($row["ASSG"]=='CW'){echo ' selected="selected"';} echo ">CW</option>";
-													echo '<option'; if ($row["ASSG"]=='D'){echo ' selected="selected"';} echo ">D</option>";
-													echo '<option'; if ($row["ASSG"]=='E'){echo ' selected="selected"';} echo ">E</option>";
-													echo '<option'; if ($row["ASSG"]=='EP'){echo ' selected="selected"';} echo ">EP</option>";
-													echo '<option'; if ($row["ASSG"]=='HSE'){echo ' selected="selected"';} echo ">HSE</option>";
-													echo '<option'; if ($row["ASSG"]=='P'){echo ' selected="selected"';} echo ">P</option>";
-													echo '<option'; if ($row["ASSG"]=='PA'){echo  ' selected="selected"';} echo ">PA</option>";
-													echo '<option'; if ($row["ASSG"]=='RA'){echo ' selected="selected"';} echo ">RA</option>";
-													echo '<option'; if ($row["ASSG"]=='RE'){echo ' selected="selected"';} echo ">RE</option>";
-													echo '<option'; if ($row["ASSG"]=='RS'){echo ' selected="selected"';} echo ">RS</option>";
-													echo '<option'; if ($row["ASSG"]=='S'){echo ' selected="selected"';} echo ">S</option>";
-													echo '<option'; if ($row["ASSG"]=='SE'){echo ' selected="selected"';} echo ">SE</option>";
-													echo '<option'; if ($row["ASSG"]=='T'){echo ' selected="selected"';} echo ">T</option>";
-													echo '<option'; if ($row["ASSG"]=='TE'){echo ' selected="selected"';} echo ">TE</option>";
+												$sql2 = "SELECT * FROM childdependent WHERE emp_idno=$myid";
+												$result2 = $conn->query($sql2);
+												$types = array();
+												
+												echo "<br>";
+												
+												echo "<br>";
+												$warning = 0;
+												while(($row2 =  $result2->fetch_assoc())) {
+												    
+												    $types[] = $row2["bdate"];
 
-													echo '
+												    
+												    $mybdate = substr($row2["bdate"], -4);
+												    echo substr($row2["bdate"], -4);
 
-												  </select>
-													</td>';
-												echo '<td align = "center"><div class="checkbox"><label><input type="checkbox"';
-													if ($row["invite"]==-1){
-														echo 'checked="checked"';
-													}
-												echo '></div></td>';
-												echo '<td align = "center"><div class="checkbox"><label><input type="checkbox"';
-													if ($row["firsttimer"]==-1){
-														echo 'checked="checked"';
-													}
-												echo '></div></td>	</div> ';	
+												    echo " ";
+												    
 
-												//as;dlja;slkdj
+												    if (date('Y')-$mybdate == 24)
+												    {
+												    	#echo "Warning! May be taking UPCAT";
+												    	$warning = 1;
+												    }
+												    if (date('Y')-$mybdate == 16)
+												    {
+												    	echo "Warning! May be taking UPCAT";
+												    	$warning = 1;
+												    }
+												    if (date('Y')-$mybdate == 17)
+												    {
+												    	echo "Warning! May be taking UPCAT";
+												    	$warning = 1;
+												    }
+
+												    echo "<br>";
+												}
+
+												echo '</td>';
+
+												if($row["invite"] == 1)
+												{
+													echo '<td align="center"><a href="invite2.php?id='.$row["id"].'">Yes</a></td>';	
+												}
+												else
+												{
+													echo '<td align="center"><a href="invite2.php?id='.$row["id"].'">No</a></td>';	
+												}
+												if($row["firsttimer"] == 1)
+												{
+													echo '<td align="center"><a href="changefirsttime.php?id='.$row["id"].'">Yes</a></td>';	
+												}
+												else
+												{
+													echo '<td align="center"><a href="changefirsttime.php?id='.$row["id"].'">No</a></td>';	
+												}
+
+																							
+												
+											
+												
+
+
+												
 												// '<div class="dropdown">
 												//   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View Profile
 												//   <span class="caret"></span></button>
@@ -235,84 +285,12 @@
 								}
 
 
-								
+								$conn->close();
 								?>
-								<!--Filter-->
-								<script>
-									function myFunction() {
-										var input, filter, table, tr, td, i;
-										input = document.getElementById("myInput");
-										filter = input.value.toUpperCase();
-										table = document.getElementById("myTable");
-										tr = table.getElementsByTagName("tr");
-
-										for (i = 0; i < tr.length; i++) {
-											td = tr[i].getElementsByTagName("td")[0];
-											if (td) {
-												if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-													tr[i].style.display = "";
-												} else {
-													tr[i].style.display = "none";
-												}
-											}       
-										}
-									}
-								</script>
-								<script type='text/javascript'>
-								$('#button1').click(function(){
-								 $.ajax({
-								 type: "POST",
-								 url: "generate_pdf.php",
-								 data: "",
-								 success: function(msg){
-								     alert(msg);
-								 },
-								 error: function(XMLHttpRequest, textStatus, errorThrown) {
-								    alert("Some error occured");
-								 }
-								 });
-								});
-								</script>
 								</tbody>
 							</table>
 			</div>
 		</div>
 </div>
 </body>
-<?php
-$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-
-$txt = "Jane Doe\n";
-fwrite($myfile, $txt);
-
-
-if ($result->num_rows > 0) {
-		// output data of each row
-
-
-		while($row = $result->fetch_assoc()) {
-			$txt = "Jane Doe\n";
-		fwrite($myfile, $txt);
-				echo '<tr>';
-				echo '<td align="center">' .$row["ID"] . '</td>'; 
-				echo '<td align="center">' .$row["STATUS"] . '</td>';
-				echo '<td align="center">' .$row["NAME"] . '</td>';
-				echo '<td align="center">' .$row["UCODE"] . '</td>';
-				echo '<td align="center">' .$row["NYR"] . '</td>';
-				echo '<td align="center">' .$row["YEAR"] . '</td>';
-				echo '<td align="center">' .$row["TCTRCODE"] . '</td>';
-				echo '<td align="center">' .$row["testcenter"] . '</td>';
-				echo '<td align="center">' .$row["ASSG"] . '</td>';
-				echo '<td align="center"><a href="viewprofile.php?id='.$row["ID"].'">View Profile</a></td>';
-							
-				echo '</tr>';
-		}
-}
-
-
-$conn->close();
-
-
-fclose($myfile);
-?>
 </html>

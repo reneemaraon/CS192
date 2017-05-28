@@ -40,10 +40,10 @@
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
 						<li><a href="home.php" class="active">View List of Personnel</a></li>
 						<li><a href="addrecord.php">Add Record</a></li>
-						<li><a href="Invitation">Invitation</a></li>
-						<li><a href="Rates">Response</a></li>
-			            <li><a href="Assignment">Assignment (Regional)</a></li>
-            			<li><a href="Assignment_Dil">Assignment (Diliman)</a></li>
+						<li><a href="invitation.php">Invitation</a></li>
+						<li><a href="Response">Response</a></li>
+						<li><a href="attendanceregional.php">Assignment (Regional)</a></li>
+						<li><a href="attendancediliman.php">Assignment (Diliman)</a></li>
 						<li><a href="Attendance">UPCAT Attendance</a></li>
 
 				</ul>
@@ -91,7 +91,11 @@
 				    	echo '<h5><b>Tenure:</b> '.$row['TENURE'].'</h4>';
 				    	echo '<h5><b>Unit/Department:</b> '.$row['UNIT'].'</h4>';
 				    	echo '<h5><b>Coll/Office:</b> '.$row['COLL'].'</h4>';
-				    	echo '<h5><b>FAR:</b> '.$row['FAR'].'</h4>';
+						if($row["FAR"]==1){$d="F";}
+						if($row["FAR"]==2){$d="A";}
+						if($row["FAR"]==3){$d="R";}
+						if($row["FAR"]==4){$d="o";}
+				    	echo '<h5><b>FAR:</b> '.$d.'</h4>';
 				    	echo '<h5><b>Salary Grade:</b> '.$row['SG'].'</h4><br>';
 				    	echo '<h5 class="specialcolor"><b>Contact Information</b></h5>';
 				    	echo '<div class="col-sm-4">
@@ -219,6 +223,9 @@
 								$result = $conn->query($sql);
 								$sql2 = "SELECT * FROM childdependent WHERE emp_idno='$pid'";
 								$children = $conn->query($sql2);
+								$sql3 = "SELECT * FROM `CATDIREC` WHERE ID='$pid'";
+								$result3 = $conn->query($sql3);
+
 								if ($result->num_rows > 0) {
 										// output data of each row
 										while($row = $result->fetch_assoc()) {
@@ -236,7 +243,7 @@
 										echo "0 results";
 								}
 			      
-								$conn->close();
+								
 								?>
 						</tbody>
 					</table>
@@ -245,8 +252,49 @@
 				<br>
 
 				<h3 class="specialcolor">Partners</h3>
-				<br>
-				<br>
+				<div class="col-sm-12">
+					<table class ="table">
+						<thead>
+							<tr>
+								<th style="text-align:center">ID</th>
+								<th style="text-align:center">Name</th>
+								<th style="text-align:center">YEAR</th>
+								<th style="text-align:center">ASSG</th>
+								<th style="text-align:center">TCTRCODE</th>
+								<th style="text-align:center">Test Center</th>
+							</tr>
+						</thead>
+						<tbody>
+					<?php
+						if ($result3->num_rows > 0) {
+								// output data of each row
+								while($row = $result3->fetch_assoc()) {
+										$myear = $row["YEAR"];
+										$tctrcode = $row["TCTRCODE"];
+										$sql4 = "SELECT * FROM `CATDIREC` WHERE YEAR='$myear' AND ASSG IN ('RA','RE') AND TCTRCODE =$tctrcode";
+										$result4 = $conn->query($sql4);
+										if ($result4->num_rows > 0) {
+												// output data of each row
+												while($row2 = $result4->fetch_assoc()) {
+														echo '<tr>';
+														echo '<td align="center">' .$row2["ID"] . '</td>';
+														echo '<td align="center">' .$row2["NAME"] . '</td>';
+														echo '<td align="center">' .$row2["YEAR"] . '</td>';
+														echo '<td align="center">' .$row2["ASSG"] . '</td>';
+														echo '<td align="center">' .$row2["TCTRCODE"] . '</td>';
+														echo '<td align="center">' .$row2["TESTCENTER"] . '</td>';
+														echo '</tr>';
+												}
+										} 
+								}
+						} else {
+								echo "0 results";
+						}
+			      		$conn->close();
+					?>
+					<tbody>
+					</table>
+				</div>
 				<h3 class="specialcolor">Educational Attainment</h3>
 				<table class="table">
 					<thead>
