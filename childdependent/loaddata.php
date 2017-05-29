@@ -54,7 +54,7 @@ $grid = new EditableGrid();
 *  Add columns. The first argument of addColumn is the name of the field in the databse. 
 *  The second argument is the label that will be displayed in the header
 */
-$grid->addColumn('ID', 'ID', 'integer', NULL, false);
+$grid->addColumn('id', 'id', 'integer', NULL, false);
 $grid->addColumn('emp_idno','Employee ID', 'integer', NULL, false); 
 $grid->addColumn('anak_name','Name of Child', 'string'); 
 $grid->addColumn('bdate','Year of Birth', 'string'); 
