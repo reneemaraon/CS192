@@ -20,6 +20,7 @@
       header('location: error.php');
     }
     $user = $_SESSION['user'];
+    $rights=$_SESSION['rights'];
   ?>
 <nav class="navbar navbar-default">
 	<div class="container-fluid">

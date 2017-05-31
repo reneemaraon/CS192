@@ -1,5 +1,14 @@
 <?php     
 
+    session_start();
+    if($_SESSION['user']){
+    }
+    else{
+      header('location: login.php');
+    }
+    $user = $_SESSION['user'];
+  
+
 
 /*
  * examples/mysql/loaddata.php
@@ -55,10 +64,16 @@ $grid = new EditableGrid();
 *  The second argument is the label that will be displayed in the header
 */
 $grid->addColumn('id', 'id', 'integer', NULL, false); 
+if ($_SESSION['rights']==1){
 $grid->addColumn('BANK', 'Bank', 'string');
 $grid->addColumn('Bank_desc', 'Description', 'string');
 $grid->addColumn('action', 'Action', 'html', NULL, false, 'id'); 
-
+}
+else{
+$grid->addColumn('BANK', 'Bank', 'string', NULL, false);
+$grid->addColumn('Bank_desc', 'Description', 'string', NULL, false);
+	
+}
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : '`banks`';
                                                                        
 $result = $mysqli->query('SELECT * FROM '.$mydb_tablename );

@@ -21,7 +21,7 @@
 
     }
     else{
-      header('location: ../error.php');
+      header('location: error.php');
     }
     $user = $_SESSION['user'];
   ?>

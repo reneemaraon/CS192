@@ -24,7 +24,7 @@
 		<a href="#" class="navbar-left"><img src="pics/logo.png" width="40px" hspace="20px" vspace="5px"></a>
 		<a class="navbar-brand" href="#">UP Office of Admissions</a>
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="home.php">Home</a></li>
+			<li><a href="home.php">Home</a></li>
 			<li><a href="profile.php">Profile</a></li>
 			<li><a href="Rates">Records</a></li>
 			<li><a href="logout.php">Logout</a></li>
@@ -39,7 +39,7 @@
 					<ul id="sidebar" class="nav nav-stacked nav-pills" style="color: #660000">
 						<li><a href="home.php">View List of Personnel</a></li>
 						<li><a href="addrecord.php">Add Record</a></li>
-						<li><a href="Invitation">Invitation</a></li>
+						<li><a href="invitation.php">Invitation</a></li>
 						<li><a href="Response">Response</a></li>
 						<li><a href="attendanceregional.php">Assignment (Regional)</a></li>
 						<li><a href="attendancediliman.php">Assignment (Diliman)</a></li>

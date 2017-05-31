@@ -1,5 +1,11 @@
 <?php     
-
+    session_start();
+    if($_SESSION['user']){
+    }
+    else{
+      header('location: login.php');
+    }
+    $user = $_SESSION['user'];
 
 /*
  * examples/mysql/loaddata.php
@@ -56,6 +62,8 @@ $grid = new EditableGrid();
 */
 
 $grid->addColumn('ID', 'ID', 'integer', NULL, false); 
+if ($_SESSION['rights']==1){
+
 $grid->addColumn('NAME', 'Name', 'string');
 $grid->addColumn('STATUS', 'Status', 'string');
 $grid->addColumn('YEAR', 'Year', 'string');
@@ -65,7 +73,19 @@ $grid->addColumn('BUILDING', 'Building', 'string');
 $grid->addColumn('ROOM', 'Room', 'string');
 $grid->addColumn('ASSG', 'Assignment', 'string');
 $grid->addColumn('NYR', 'Number of Years', 'string');
+}
+else{
 
+$grid->addColumn('NAME', 'Name', 'string', NULL, false);
+$grid->addColumn('STATUS', 'Status', 'string', NULL, false);
+$grid->addColumn('YEAR', 'Year', 'string', NULL, false);
+$grid->addColumn('TCTRCODE', 'TCTRCODE', 'string', NULL, false);
+$grid->addColumn('TESTCENTER', 'Test Center', 'string', NULL, false);
+$grid->addColumn('BUILDING', 'Building', 'string', NULL, false);
+$grid->addColumn('ROOM', 'Room', 'string', NULL, false);
+$grid->addColumn('ASSG', 'Assignment', 'string', NULL, false);
+$grid->addColumn('NYR', 'Number of Years', 'string', NULL, false);	
+}
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : '`CATDIREC`';
                                                                        
 $result = $mysqli->query('SELECT * FROM '.$mydb_tablename );

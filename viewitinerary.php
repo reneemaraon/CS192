@@ -340,7 +340,11 @@
 		 		<hr />
 		 		<center>
 		 		</form>
-				<input type = "submit"; name = "submit"; value = "SAVE" class="btn btn-primary">
+		 		<?php
+		 		if ($_SESSION['rights']==1){
+				echo '<input type = "submit"; name = "submit"; value = "SAVE" class="btn btn-primary">';
+		 		}
+		 		?>
 		 		</center>
 		 		
 		 	</div>
@@ -361,23 +365,35 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$transpo = mysql_real_escape_string($_POST['transpo']);
 	$lines = mysql_real_escape_string($_POST['lines']); 
 	$terminal =mysql_real_escape_string($_POST['terminal']); 
+
 	$date = mysql_real_escape_string($_POST['date']);	
+	
 	$time = mysql_real_escape_string($_POST['time']); 
+	
 	$destination = mysql_real_escape_string($_POST['destination']); 
 	$connectingtrip = mysql_real_escape_string($_POST['connectingtrip']); 
 	$flightno = mysql_real_escape_string($_POST['flightno']); 
 	$onewayfare = mysql_real_escape_string($_POST['onewayfare']); 
+	
 	$expectedarrival1 = mysql_real_escape_string($_POST['expectedarrival1']);
+	
 	$expectedtime1 = mysql_real_escape_string($_POST['expectedtime1']); 
+	
 	$remarks = mysql_real_escape_string($_POST['remarks']); 
+	
 	$date2 = mysql_real_escape_string($_POST['date2']);
+	
 	$time2 = mysql_real_escape_string($_POST['time2']); 
+	
 	$destination2 = mysql_real_escape_string($_POST['destination2']);
 	$connectingtrip2 = mysql_real_escape_string($_POST['connectingtrip2']); 
 	$flightno2 = mysql_real_escape_string($_POST['flightno2']);
 	$onewayfare2 = mysql_real_escape_string($_POST['onewayfare2']); 
+	
 	$expectedarrival2 = mysql_real_escape_string($_POST['expectedarrival2']);
+	
 	$expectedtime2 = mysql_real_escape_string($_POST['expectedtime2']);
+	
 	$remarks2 = mysql_real_escape_string($_POST['remarks2']); 
 	$numofpersons = mysql_real_escape_string($_POST['numofpersons']);
 	$avservicefee = mysql_real_escape_string($_POST['avservicefee']);

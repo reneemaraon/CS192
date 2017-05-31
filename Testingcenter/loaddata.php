@@ -1,6 +1,12 @@
 <?php     
 
-
+    session_start();
+    if($_SESSION['user']){
+    }
+    else{
+      header('location: login.php');
+    }
+    $user = $_SESSION['user'];
 /*
  * examples/mysql/loaddata.php
  * 
@@ -54,6 +60,8 @@ $grid = new EditableGrid();
 *  Add columns. The first argument of addColumn is the name of the field in the databse. 
 *  The second argument is the label that will be displayed in the header
 */
+
+if ($_SESSION['rights']==1){
 $grid->addColumn('TctrCode', 'TctrCode', 'integer');
 $grid->addColumn('tctr_tag', 'tctr_tag', 'string');
 $grid->addColumn('LVM_tag', 'LVM_tag', 'string');
@@ -71,6 +79,26 @@ $grid->addColumn('Max_P', 'Min_P', 'string');
 $grid->addColumn('Total_N', 'Total_N', 'integer');
 $grid->addColumn('tag', 'tag', 'string');
 $grid->addColumn('action', 'Action', 'html', NULL, false, 'id'); 
+}
+else{
+$grid->addColumn('TctrCode', 'TctrCode', 'integer', NULL, false);
+$grid->addColumn('tctr_tag', 'tctr_tag', 'string', NULL, false);
+$grid->addColumn('LVM_tag', 'LVM_tag', 'string', NULL, false);
+$grid->addColumn('cluster', 'cluster', 'string', NULL, false);
+$grid->addColumn('Reg_tag', 'Reg_tag', 'string', NULL, false);
+$grid->addColumn('BLDG', 'BLDG', 'string', NULL, false);
+$grid->addColumn('BLDG_desc', 'BLDG_desc', 'string', NULL, false);
+$grid->addColumn('Room', 'Room', 'string', NULL, false);  
+$grid->addColumn('Cap', 'Cap', 'string', NULL, false);
+$grid->addColumn('active', 'active', 'integer', NULL, false);
+$grid->addColumn('Remarks', 'Remarks', 'string', NULL, false);
+$grid->addColumn('N_E', 'N_E', 'string', NULL, false);
+$grid->addColumn('Min_P', 'Min_P', 'string', NULL, false);
+$grid->addColumn('Max_P', 'Min_P', 'string', NULL, false);
+$grid->addColumn('Total_N', 'Total_N', 'integer', NULL, false);
+$grid->addColumn('tag', 'tag', 'string', NULL, false);
+	
+}
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : 'TestCenters';
                                                                        

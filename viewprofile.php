@@ -15,7 +15,18 @@
     else{
       header('location: login.php');
     }
+    if($_SESSION['user'] && $_SESSION['rights'] == 1){
+    }
+    else if($_SESSION['user'] && $_SESSION['rights'] == 2)
+    {
+
+    }
+    else{
+      header('location: error.php');
+    }
+
     $user = $_SESSION['user'];
+    $rights=$_SESSION['rights'];
     $id_exists = false;
   ?>
 <nav class="navbar navbar-default">
@@ -74,7 +85,10 @@
 			    			else{
 			    				echo '<img src="Photos/UPCAT photo/'.$row['memPropertyPhotoLink'].'" width="200px">';
 			    			}
+			    			if ($rights==1){
+			    				
 			    	  echo	'<br><br><a href="editprofile.php?id='.$pid.'" role="button" class="btn btn-danger">Edit Profile</a>';
+			    			}
 			    		?>
 					</center>
 					<br>

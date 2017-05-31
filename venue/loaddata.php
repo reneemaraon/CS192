@@ -1,6 +1,12 @@
 <?php     
 
-
+    session_start();
+    if($_SESSION['user']){
+    }
+    else{
+      header('location: login.php');
+    }
+    $user = $_SESSION['user'];
 /*
  * examples/mysql/loaddata.php
  * 
@@ -55,6 +61,7 @@ $grid = new EditableGrid();
 *  The second argument is the label that will be displayed in the header
 */
 $grid->addColumn('ID', 'ID', 'integer', NULL, false); 
+if ($_SESSION['rights']==1){
 $grid->addColumn('venue', 'Venue', 'string');
 $grid->addColumn('day', 'Day', 'string');
 $grid->addColumn('date', 'Date', 'string');
@@ -78,6 +85,33 @@ $grid->addColumn('day3', 'Day3', 'string');
 $grid->addColumn('date3', 'Date3', 'string');
 $grid->addColumn('time3', 'Time3', 'string');
 $grid->addColumn('deadlyn3', 'Deadline3', 'string');
+}
+else{
+$grid->addColumn('venue', 'Venue', 'string', NULL, false);
+$grid->addColumn('day', 'Day', 'string', NULL, false);
+$grid->addColumn('date', 'Date', 'string', NULL, false);
+$grid->addColumn('time', 'Time', 'string', NULL, false);
+$grid->addColumn('deadlyn', 'Deadline', 'string', NULL, false);
+$grid->addColumn('UPCAtyr', 'UPCAT Year', 'string', NULL, false);
+$grid->addColumn('Upcatday1', 'UPCAT Day 1', 'string', NULL, false);
+$grid->addColumn('Upcatday2', 'UPCAT Day 2', 'string', NULL, false);
+$grid->addColumn('venueR', 'VenueR', 'string', NULL, false);
+$grid->addColumn('dayR', 'DayR', 'string', NULL, false);
+$grid->addColumn('dateR', 'DateR', 'string', NULL, false);
+$grid->addColumn('timeR', 'TimeR', 'string', NULL, false);
+$grid->addColumn('deadlynR', 'DeadlineR', 'string', NULL, false);
+$grid->addColumn('venue2', 'Venue2', 'string', NULL, false);
+$grid->addColumn('day2', 'Day2', 'string', NULL, false);
+$grid->addColumn('date2', 'Date2', 'string', NULL, false);
+$grid->addColumn('time2', 'Time2', 'string', NULL, false);
+$grid->addColumn('deadlyn2', 'Deadline2', 'string', NULL, false);
+$grid->addColumn('venue3', 'Venue3', 'string', NULL, false);
+$grid->addColumn('day3', 'Day3', 'string', NULL, false);
+$grid->addColumn('date3', 'Date3', 'string', NULL, false);
+$grid->addColumn('time3', 'Time3', 'string', NULL, false);
+$grid->addColumn('deadlyn3', 'Deadline3', 'string', NULL, false);
+
+}
 
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : '`venue`';

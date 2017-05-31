@@ -1,5 +1,13 @@
 <?php     
 
+    session_start();
+    if($_SESSION['user']){
+    }
+    else{
+      header('location: login.php');
+    }
+    $user = $_SESSION['user'];
+  
 
 /*
  * examples/mysql/loaddata.php
@@ -56,10 +64,15 @@ $grid = new EditableGrid();
 */
 $grid->addColumn('id', 'id', 'integer', NULL, false);
 $grid->addColumn('emp_idno','Employee ID', 'integer', NULL, false); 
+if ($_SESSION['rights']==1){
 $grid->addColumn('anak_name','Name of Child', 'string'); 
 $grid->addColumn('bdate','Year of Birth', 'string'); 
 $grid->addColumn('action', 'Action', 'html', NULL, false, 'id'); 
-
+}
+else{
+$grid->addColumn('anak_name','Name of Child', 'string', NULL, false); 
+$grid->addColumn('bdate','Year of Birth', 'string', NULL, false); 	
+}
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : '`childdependent`';
                                                                        
 $result = $mysqli->query('SELECT * FROM '.$mydb_tablename );

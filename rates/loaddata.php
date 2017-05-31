@@ -1,6 +1,13 @@
 <?php     
 
-
+    session_start();
+    if($_SESSION['user']){
+    }
+    else{
+      header('location: login.php');
+    }
+    $user = $_SESSION['user'];
+  
 /*
  * examples/mysql/loaddata.php
  * 
@@ -54,11 +61,19 @@ $grid = new EditableGrid();
 *  Add columns. The first argument of addColumn is the name of the field in the databse. 
 *  The second argument is the label that will be displayed in the header
 */
+
 $grid->addColumn('id', 'ID', 'integer', NULL, false); 
+if ($_SESSION['rights']==1){
 $grid->addColumn('Designation', 'Designation', 'string');
 $grid->addColumn('Des_Code', 'Des_Code', 'string');
 $grid->addColumn('Rate', 'Rate', 'integer');  
 $grid->addColumn('action', 'Action', 'html', NULL, false, 'id');  
+}
+else{
+$grid->addColumn('Designation', 'Designation', 'string', NULL, false);
+$grid->addColumn('Des_Code', 'Des_Code', 'string', NULL, false);
+$grid->addColumn('Rate', 'Rate', 'integer', NULL, false);  
+}
 
 $mydb_tablename = (isset($_GET['db_tablename'])) ? stripslashes($_GET['db_tablename']) : 'Rates';
                                                                        
