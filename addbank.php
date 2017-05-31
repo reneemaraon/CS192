@@ -65,7 +65,7 @@
 
 				<div class="form-group">
 					<label for="upcatPreAss">ID</label>
-					<input type="text" class="form-control" id="ID1" name="ID1">
+					<input type="text" class="form-control" id="id" name="id">
 				</div>
 
 				<div class="form-group">
@@ -102,7 +102,7 @@ $bool = NULL;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   
-  $ID1 = mysql_real_escape_string($_POST['ID1']);  
+  $id = mysql_real_escape_string($_POST['id']);  
   $Bank_id = mysql_real_escape_string($_POST['Bank_id']);
   $BANK = mysql_real_escape_string($_POST['BANK']);
   $Bank_desc = mysql_real_escape_string($_POST['Bank_desc']);
@@ -116,8 +116,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 if($bool){
-  $insert = mysql_query("INSERT INTO `Banks` (`ID1`, `Bank_id`, `BANK`, `Bank_desc`)
-  									VALUES ('$ID1', '$Bank_id', '$BANK', '$Bank_desc');");
+  $insert = mysql_query("INSERT INTO `Banks` (`id`, `Bank_id`, `BANK`, `Bank_desc`)
+  									VALUES ('$id', '$Bank_id', '$BANK', '$Bank_desc');");
   
   Print '<script>alert("Successfully Registered!");</script>'; // Prompts the user
 
