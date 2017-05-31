@@ -47,12 +47,12 @@
 				 <?php echo $_SESSION['name']?><br>
 				 <?php echo $_SESSION['user']?><br>
 				 <?php echo $_SESSION['email']?><br>
-				 <?php echo $_SESSION['phone']?>
-
+				 <?php echo $_SESSION['phone']?><br>
+				 
 			</div>
 
 
-
+			<?php if($_SESSION['rights'] == 1) {echo '<a href=user.php>Change User Rights</a>';}?><br>
 		</h5>	
 	</div>
 
