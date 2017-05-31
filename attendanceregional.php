@@ -128,7 +128,8 @@
 									<tr>
 										<th style="text-align:center">ID</th>
 										<th style="text-align:center">Name</th>
-										<!-- <th style="text-align:center">ASSG</th> -->
+										<th style="text-align:center">ASSG</th>
+										
 										<th style="text-align:center">CODE</th>
 										<th style="text-align:center">Region</th>
 										
@@ -150,7 +151,7 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `Invites` WHERE response in (0,1) AND invite in (1,-1) AND ASSG in (9,13)";
+								$sql = "SELECT * FROM `Invites` WHERE response in (0,1) AND invite in (1,-1) AND ASSG in (9,13, 'RE','RA')";
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
@@ -160,7 +161,13 @@
 												echo '<tr>';
 												echo '<td align="center">' .$row["id"] . '</td>'; 
 												echo '<td align="center">' .$row["tblName"] . '</td>';
-												// echo '<td align="center">' .$row["ASSG"] . '</td>';
+												if ($_SESSION['rights']==1 or $_SESSION['rights']==2){
+													echo '<td align="center"><a href="changeassg3.php?id='.$row["id"].'">'.$row["ASSG"] .'</a></td>';
+												}
+												else{
+													echo '<td align="center">' .$row["ASSG"] . '</td>';
+												}
+
 												echo '<td align="center">' .$row["Assg_TCTRC"] . '</td>';
 												echo '<td align="center">' .$row["Assg_TestingHall"] . '</td>';
 												

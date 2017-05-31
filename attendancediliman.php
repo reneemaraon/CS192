@@ -128,7 +128,8 @@
 									<tr>
 										<th style="text-align:center">ID</th>
 										<th style="text-align:center">Name</th>
-										<!-- <th style="text-align:center">ASSG</th> -->
+										<th style="text-align:center">ASSG</th>
+										<th style="text-align:center">Change ASSG?</th>
 										<th style="text-align:center">CODE</th>
 										<th style="text-align:center">Hall</th>
 										<th style="text-align:center">Room</th>
@@ -151,7 +152,7 @@
 										die("Connection failed: " . $conn->connect_error);
 								} 
 
-								$sql = "SELECT * FROM `Invites` WHERE response in (0,1,2) AND invite in (1,-1) AND ASSG in (1,2,3,4,5,6,7,8,10,11,12,14,15,16)";
+								$sql = "SELECT * FROM `Invites` WHERE response in (0,1,2) AND invite in (1,-1) AND ASSG in (1,2,3,4,5,6,7,8,10,11,12,14,15,16,'A','C','P','PA','S','E','CP','HSE','RS','D','SE','EP')";
 								$result = $conn->query($sql);
 
 								if ($result->num_rows > 0) {
@@ -161,7 +162,20 @@
 												echo '<tr>';
 												echo '<td align="center">' .$row["id"] . '</td>'; 
 												echo '<td align="center">' .$row["tblName"] . '</td>';
-												// echo '<td align="center">' .$row["ASSG"] . '</td>';
+												if ($_SESSION['rights']==1 or $_SESSION['rights']==2){
+													echo '<td align="center"><a href="changeassg4.php?id='.$row["id"].'">'.$row["ASSG"] .'</a></td>';
+												}
+												else{
+													echo '<td align="center">' .$row["ASSG"] . '</td>';
+												}
+												if($row["ASSG"] == 'RE' or $row["ASSG"] == 'RA')
+												{
+													echo '<td align="center">' . 'Change ASSG' . '</td>';
+												}
+												else
+												{
+													echo '<td align="center">' .''. '</td>';
+												}
 												echo '<td align="center">' .$row["Assg_TCTRC"] . '</td>';
 												echo '<td align="center">' .$row["Assg_TestingHall"] . '</td>';
 												echo '<td align="center">' .$row["Assg_TestingRoom"] . '</td>';
