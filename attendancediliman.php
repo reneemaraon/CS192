@@ -43,7 +43,7 @@
 						<li><a href="invitation.php">Invitation</a></li>
 						<li><a href="Response">Response</a></li>
 						<li><a href="attendanceregional.php">Assignment (Regional)</a></li>
-						<li><a href="attedancediliman.php" class="active">Assignment (Diliman)</a></li>
+						<li><a href="attendancediliman.php" class="active">Assignment (Diliman)</a></li>
 						<li><a href="Attendance">UPCAT Attendance</a></li>
 
 				</ul>
@@ -190,7 +190,10 @@
 								</tbody>
 							</table>
 			</div>
+			
 		</div>
+
+
 </div>
 </body>
 </html>

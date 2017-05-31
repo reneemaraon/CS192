@@ -14,13 +14,15 @@
     $sql = "UPDATE Invites SET `Assg_TCTRC`=".$result["TctrCode"].", `Assg_TestingRoom`='".$result["Room"]."',`Assg_TestingHall`='".$result["BLDG"]."' WHERE id=".$_GET["id"];
 	echo $sql;
 	// mysqli_query
+	$result = $conn->query($sql);
+	echo " ";
 	$pid = $_GET["id"];
 
 	$sql = "SELECT * FROM `Invites` WHERE id = '$pid'";
 	$result = $conn->query($sql);
-  mysql_connect("localhost", "root", "") or die(mysql_error()); //connect to server
-  mysql_select_db("upcatdb") or die("Cannot connect to database"); //connect to database
-  $query = mysql_query("Select * from user");
+	mysql_connect("localhost", "root", "") or die(mysql_error()); //connect to server
+	mysql_select_db("upcatdb") or die("Cannot connect to database"); //connect to database
+	$query = mysql_query("Select * from user");
 	if ($result->num_rows > 0) {
 			// output data of each row
 
@@ -63,6 +65,7 @@
 	} else {
     	echo "Error updating record: " . mysqli_error($conn);
 	}
+	header('location: attendancediliman.php');
 
 
 

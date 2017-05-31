@@ -130,7 +130,7 @@
 										<th style="text-align:center">Name</th>
 										<!-- <th style="text-align:center">ASSG</th> -->
 										<th style="text-align:center">CODE</th>
-										<th style="text-align:center">Hall</th>
+										<th style="text-align:center">Region</th>
 										
 										<th style="text-align:center">Test Center</th>
 									</tr>
