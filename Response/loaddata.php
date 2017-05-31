@@ -57,7 +57,7 @@ $grid = new EditableGrid();
 
 $grid->addColumn('id', 'ID', 'integer', NULL, false);
 $grid->addColumn('tblName', 'Name', 'string');
- $grid->addColumn('ASSG', 'Assignment', 'string',fetch_pairs($mysqli,'SELECT id,Des_Code FROM Rates WHERE Des_Code in ("RE", "RA", "P" ,"PA" ,"A" ,"EP" ,"HSE" ,"E")'),true );
+ $grid->addColumn('ASSG', 'Assignment', 'string',fetch_pairs($mysqli,'SELECT Des_Code,Designation FROM Rates WHERE Des_Code in ("RE", "RA", "P" ,"PA" ,"A" ,"EP" ,"HSE" ,"E")'),true );
 $grid->addColumn('response', 'response', 'string', ["Yes", "No", "Dil", "Not Available", "No Response"] ,true );
 $grid->addColumn('remarks', 'remarks', 'string');
 $grid->addColumn('preferences', 'preferences', 'string');

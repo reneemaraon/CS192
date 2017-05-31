@@ -76,6 +76,9 @@
             <div id="toolbar">
               <input type="text" id="filter1" name="filter" placeholder="Name"  />
               <input type="text" id="filter2" name="filter" placeholder="Assignment"  />
+              <form action="../pdf5.php">
+                <input type="submit" value="Generate Invite List"/>
+              </form>
 
             </div>
       <!-- Grid contents -->
