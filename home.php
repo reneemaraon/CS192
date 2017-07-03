@@ -9,6 +9,7 @@
 </head>
 <body>
   	  <?php
+  	  ini_set('memory_limit','200M');
     session_start();
     if($_SESSION['user'] && $_SESSION['rights'] == 1){
     }

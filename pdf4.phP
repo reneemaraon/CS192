@@ -22,11 +22,15 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','',15);	
 
 			$pdf->Cell(10,5,"Check List Invites: Selected List");
+			$pdf->Ln();
+			$pdf->Cell(10,5,"_______________________________________________________________________________");
+			$pdf->Ln();
 			$pdf->SetFont('Arial','',8);	
+			$pdf->Cell(10,5,date('l jS \of F Y h:i:s A'));
 			$pdf->Ln();
 			$pdf->Ln();
 			$pdf->Cell(10,5,"ID");
-			$pdf->Cell(20,5,"Name");
+			$pdf->Cell(30,5,"Name");
 			$pdf->Cell(10,5,"FAR");
 			$pdf->Cell(10,5,"YEAR");
 			$pdf->Cell(20,5,"Ucode");
@@ -37,7 +41,7 @@ $pdf->SetFont('Arial','',15);
 			$pdf->Cell(7,5,"EP");
 			$pdf->Cell(7,5,"P");
 			$pdf->Cell(20,5,"Designation");
-			$pdf->Cell(50,5,"Prev Test Center");
+			$pdf->Cell(40,5,"Prev Test Center");
 			$pdf->Cell(20,5,"No. of years");
 			$pdf->Ln();
 
@@ -55,7 +59,7 @@ if ($result->num_rows > 0 ) {
 
 			
 			$pdf->Cell(10,5,$row["id"]);
-			$pdf->Cell(20,5,$row["tblName"]);
+			$pdf->Cell(30,5,$row["tblName"]);
 			$pdf->Cell(10,5,$d);
 			$pdf->Cell(10,5,$row["yrservice"]);
 			$pdf->Cell(20,5,$row["UCODE"]);
@@ -66,7 +70,7 @@ if ($result->num_rows > 0 ) {
 			$pdf->Cell(7,5,$row["EP"]);
 			$pdf->Cell(7,5,$row["P"]);
 			$pdf->Cell(20,5,$row["ASSG"]);
-			$pdf->Cell(50,5,$row["testcenter"]);
+			$pdf->Cell(40,5,$row["testcenter"]);
 			$pdf->Cell(20,5,$row["numyears"]);
 			$pdf->Ln();
 

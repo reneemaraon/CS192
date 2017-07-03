@@ -35,6 +35,7 @@
 			<li class="active"><a href="home.php">Home</a></li>
 			<li><a href="profile.php">Profile</a></li>
 			<li><a href="Rates">Records</a></li>
+			<li><a href="itinerary.php">Itinerary</a></li>
 			<li><a href="logout.php">Logout</a></li>
 		</ul>
 	</div>
@@ -199,7 +200,12 @@
 												echo '<td align="center">' .$row["yrservice"] . '</td>';
 												echo '<td align="center">' .$row["TCTRCODE"] . '</td>';
 												echo '<td align="center">' .$row["testcenter"] . '</td>';
-												echo '<td align="center"><a href="changeassg.php?id='.$row["id"].'">'.$row["ASSG"] .'</a></td>';
+												if ($_SESSION['rights']==1){
+													echo '<td align="center"><a href="changeassg.php?id='.$row["id"].'">'.$row["ASSG"] .'</a></td>';
+												}
+												else{
+													echo '<td align="center">' .$row["ASSG"] . '</td>';
+												}
 												echo '<td align="center">';
 
 												$sql2 = "SELECT * FROM childdependent WHERE emp_idno=$myid";
@@ -244,19 +250,39 @@
 
 												if($row["invite"] == 1)
 												{
-													echo '<td align="center"><a href="invite2.php?id='.$row["id"].'">Yes</a></td>';	
+													if ($_SESSION['rights']==1){
+														echo '<td align="center"><a href="invite2.php?id='.$row["id"].'">Yes</a></td>';	
+													}
+													else{
+														echo '<td align="center">Yes</td>';
+													}	
 												}
 												else
 												{
-													echo '<td align="center"><a href="invite2.php?id='.$row["id"].'">No</a></td>';	
+													if ($_SESSION['rights']==1){
+														echo '<td align="center"><a href="invite2.php?id='.$row["id"].'">No</a></td>';	
+													}
+													else{
+														echo '<td align="center">No</td>';
+													}	
 												}
 												if($row["firsttimer"] == 1)
 												{
-													echo '<td align="center"><a href="changefirsttime.php?id='.$row["id"].'">Yes</a></td>';	
+													if ($_SESSION['rights']==1){
+														echo '<td align="center"><a href="changefirsttime.php?id='.$row["id"].'">Yes</a></td>';	
+													}
+													else{
+														echo '<td align="center">Yes</td>';
+													}	
 												}
 												else
 												{
-													echo '<td align="center"><a href="changefirsttime.php?id='.$row["id"].'">No</a></td>';	
+													if ($_SESSION['rights']==1){
+														echo '<td align="center"><a href="changefirsttime.php?id='.$row["id"].'">No</a></td>';	
+													}
+													else{
+														echo '<td align="center">No</td>';
+													}	
 												}
 
 																							

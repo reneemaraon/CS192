@@ -48,6 +48,7 @@
 				</ul>
 			</div>
 			<div class="col-sm-9">
+
 						<!-- CONTENT -->
 						<h3> List of UPCAT Personnel </h3>
 						<br>
@@ -156,6 +157,13 @@
 
 								$sql = "SELECT * FROM `Invites` WHERE";
 								$cat = "";
+
+								echo '<form action="selectall2.php?id='.'1' .'">
+								<input type="submit" value="Select All"/>
+							</form>';
+								echo '<a href="selectall2.php?id='.$_POST['year'].'">hi</a>';
+
+							echo $_POST['year'];
 
 								if ($_POST['year']!=""){
 									$cat.=" yrservice = ".$_POST['year'];
